@@ -37,7 +37,7 @@ void myunputc(int c) {
 		return LESS;
 	}
 "|"		{
-		return PIPE
+		return PIPE;
 	}
 
 [^ \t\n][^ \t\n]*  {
