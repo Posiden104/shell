@@ -101,7 +101,7 @@ iomodifier_opt:
 
 pipe_opt:
 	PIPE {
-		printf("   Yacc: insert pipe to \"/*%s*/\"\n");
+		printf("   Yacc: insert pipe to \"\"\n");
 	}
 	| /* can be empty */
 	;
