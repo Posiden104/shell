@@ -142,7 +142,7 @@ Command::execute()
 		prompt();
 		return;
 	}
-
+/
 	// Print contents of Command data structure
 	print();
 
