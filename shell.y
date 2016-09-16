@@ -90,10 +90,14 @@ iomodifier_opt:
 		printf("   Yacc: insert input \"%s\"\n", $2);
 		Command::_currentCommand._inFile = $2;
 	}
-	| PIPE WORD{
+	| PIPE WORD {
 		printf("   Yacc: insert pipe to \"%s\"\n", $2);
-		Command::_currentCommand._outFile = $2
-		kls;
+	}
+	| GREATAMP WORD{
+		printf("   Yacc: insert output \"%s\"\n", $2);
+		printf("   Yacc: insert error \"%s\"\n", $2);
+		Command::_currentCommand._outFile = $2;
+		Command::_currentCommand._errFile = $2;
 	}
 	| /* can be empty */ 
 	;
