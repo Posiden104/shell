@@ -44,7 +44,7 @@ command: simple_command
         ;
 
 simple_command:	
-	command_and_args iomodifier_opt bg_opt NEWLINE {
+	command_and_args iomodifier_opt bg_opt pipe_opt NEWLINE {
 		printf("   Yacc: Execute command\n");
 		Command::_currentCommand.execute();
 	}
@@ -90,9 +90,6 @@ iomodifier_opt:
 		printf("   Yacc: insert input \"%s\"\n", $2);
 		Command::_currentCommand._inFile = $2;
 	}
-	| PIPE WORD {
-		printf("   Yacc: insert pipe to \"%s\"\n", $2);
-	}
 	| GREATAMP WORD{
 		printf("   Yacc: insert output \"%s\"\n", $2);
 		printf("   Yacc: insert error \"%s\"\n", $2);
@@ -100,6 +97,13 @@ iomodifier_opt:
 		Command::_currentCommand._errFile = Command::_currentCommand._outFile;
 	}
 	| /* can be empty */ 
+	;
+
+pipe_opt:
+	PIPE {
+		printf("   Yacc: insert pipe to \"/*%s*/\"\n");
+	}
+	| /* can be empty */
 	;
 
 bg_opt:
