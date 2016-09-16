@@ -90,7 +90,7 @@ iomodifier_opt:
 		printf("   Yacc: insert input \"%s\"\n", $2);
 		Command::_currentCommand._inFile = $2;
 	}
-	| PIPE {
+	| PIPE WORD {
 		printf("   Yacc: insert pipe to \"%s\"\n", $2);
 		//printf("   try to get command %s
 	}
