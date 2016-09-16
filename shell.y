@@ -44,7 +44,7 @@ command: simple_command
         ;
 
 simple_command:	
-	command_and_args iomodifier_opt NEWLINE {
+	command_and_args iomodifier_opt bg_opt NEWLINE {
 		printf("   Yacc: Execute command\n");
 		Command::_currentCommand.execute();
 	}
@@ -96,6 +96,13 @@ iomodifier_opt:
 	}
 	| /* can be empty */ 
 	;
+
+bg_opt:
+	AMP {
+		printf("   Yacc: run in background\n");
+		Command:_currentCommand._background = 1;
+	}
+	| /* can be empty*/
 
 %%
 
