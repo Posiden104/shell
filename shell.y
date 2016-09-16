@@ -92,7 +92,8 @@ iomodifier_opt:
 	}
 	| PIPE WORD{
 		printf("   Yacc: insert pipe to \"%s\"\n", $2);
-		Command::_currentCommand._outFile = $2;
+		Command::_currentCommand._outFile = $2
+		kls;
 	}
 	| /* can be empty */ 
 	;
