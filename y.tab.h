@@ -50,7 +50,12 @@ extern int yydebug;
     GREAT = 260,
     NEWLINE = 261,
     PIPE = 262,
-    LESS = 263
+    LESS = 263,
+    DGREAT = 264,
+    DLESS = 265,
+    AMP = 266,
+    GREATAMP = 267,
+    DGREATAMP = 268
   };
 #endif
 /* Tokens.  */
@@ -60,18 +65,23 @@ extern int yydebug;
 #define NEWLINE 261
 #define PIPE 262
 #define LESS 263
+#define DGREAT 264
+#define DLESS 265
+#define AMP 266
+#define GREATAMP 267
+#define DGREATAMP 268
 
 /* Value type.  */
 #if ! defined YYSTYPE && ! defined YYSTYPE_IS_DECLARED
 
 union YYSTYPE
 {
-#line 18 "shell.y" /* yacc.c:1909  */
+#line 19 "shell.y" /* yacc.c:1909  */
 
 		char   *string_val;
 	
 
-#line 75 "y.tab.h" /* yacc.c:1909  */
+#line 85 "y.tab.h" /* yacc.c:1909  */
 };
 
 typedef union YYSTYPE YYSTYPE;
