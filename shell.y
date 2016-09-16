@@ -111,6 +111,7 @@ bg_opt:
 		Command::_currentCommand._background = 1;
 	}
 	| /* can be empty*/
+	;
 
 %%
 
