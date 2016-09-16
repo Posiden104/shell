@@ -37,14 +37,14 @@ goal:
 
 commands: 
 	command
-	| commands command 
+	| commands pipe_opt command 
 	;
 
 command: simple_command
         ;
 
 simple_command:	
-	command_and_args iomodifier_opt bg_opt pipe_opt NEWLINE {
+	command_and_args iomodifier_opt bg_opt NEWLINE {
 		printf("   Yacc: Execute command\n");
 		Command::_currentCommand.execute();
 	}
@@ -103,7 +103,6 @@ pipe_opt:
 	PIPE {
 		printf("   Yacc: insert pipe to \"\"\n");
 	}
-	| /* can be empty */
 	;
 
 bg_opt:
