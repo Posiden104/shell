@@ -100,7 +100,7 @@ iomodifier_opt:
 bg_opt:
 	AMP {
 		printf("   Yacc: run in background\n");
-		Command:_currentCommand._background = 1;
+		Command::_currentCommand._background = 1;
 	}
 	| /* can be empty*/
 
