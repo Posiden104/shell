@@ -84,16 +84,21 @@ Command:: clear()
 		free ( _simpleCommands[ i ] );
 	}
 
-	if ( _outFile ) {
-		free( _outFile );
-	}
-
 	if ( _inFile ) {
 		free( _inFile );
 	}
 
-	if ( _errFile ) {
-		free( _errFile );
+	if( _outFile == _errFile) {
+		free( _outFile);	
+	} else {
+
+		if ( _outFile ) {
+			free( _outFile );
+		}
+	
+		if ( _errFile ) {
+			free( _errFile );
+		}
 	}
 
 	_numOfSimpleCommands = 0;
