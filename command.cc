@@ -158,7 +158,7 @@ Command::execute()
 void
 Command::prompt()
 {
-	printf("myshell>");
+	printf("yas>");
 	fflush(stdout);
 }
 

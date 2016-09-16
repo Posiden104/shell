@@ -89,6 +89,12 @@ iomodifier_opt:
 		printf("   Yacc: insert input \"%s\"\n", $2);
 		Command::_currentCommand._inFile = $2;
 	}
+	| PIPE command{
+		printf("   Yacc: insert pipe to \"%s\"\n", $2);
+		Command::_currentCommand._outfile = $2;
+		*Command::_currentCommand._simpleCommands._infile = 
+			Commnd::_currentCommand;
+	}
 	| /* can be empty */ 
 	;
 
