@@ -106,7 +106,6 @@ Command:: clear()
 	_inFile = 0;
 	_errFile = 0;
 	_background = 0;
-	Command::_currentCommand = new Command();
 }
 
 void
