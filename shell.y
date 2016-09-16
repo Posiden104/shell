@@ -96,8 +96,8 @@ iomodifier_opt:
 	| GREATAMP WORD{
 		printf("   Yacc: insert output \"%s\"\n", $2);
 		printf("   Yacc: insert error \"%s\"\n", $2);
-		//Command::_currentCommand._outFile = $2;
-		Command::_currentCommand._errFile = $2;
+		Command::_currentCommand._outFile = $2;
+		Command::_currentCommand._errFile = Command::_currentCommand._outFile;
 	}
 	| /* can be empty */ 
 	;
