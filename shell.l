@@ -57,6 +57,9 @@ void myunputc(int c) {
 ">>&"		{
 		return DGREATAMP;
 	}
+"exit"		{
+		return EXIT;
+	}
 
 
 
