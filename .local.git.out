@@ -249,3 +249,6 @@ nothing added to commit but untracked files present
  create mode 100644 cat
  create mode 100644 test-shell/out2
  create mode 100644 test.txt
+[master d673180] Commit
+ 2 files changed, 105 insertions(+)
+ create mode 100644 y.tab.h
