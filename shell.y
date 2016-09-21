@@ -52,6 +52,8 @@ simple_command:
 	| error NEWLINE { 
 		Command::_currentCommand.clear();
 		yyerrok; 
+		printf('\n');
+		Command::_currentCommand.prompt();
 	}
 	;
 
