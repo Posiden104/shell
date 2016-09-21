@@ -243,3 +243,9 @@ nothing added to commit but untracked files present
  5 files changed, 21 insertions(+), 142 deletions(-)
  rewrite test-shell/shell-out (72%)
  delete mode 100644 y.tab.h
+[master 67433a4] Commit
+ 4 files changed, 270 insertions(+)
+ create mode 100644 .local.git.out
+ create mode 100644 cat
+ create mode 100644 test-shell/out2
+ create mode 100644 test.txt
