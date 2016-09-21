@@ -14,7 +14,7 @@
 %token	<string_val> WORD
 
 %token 	NOTOKEN GREAT NEWLINE PIPE LESS DGREAT DLESS
-%token  AMP GREATAMP DGREATAMP
+%token  AMP GREATAMP DGREATAMP EXIT
 
 %union	{
 		char   *string_val;
