@@ -115,8 +115,8 @@ iomodifier_opt:
 		Command::_currentCommand._outAppend = 1;
 	}
 	| DGREATAMP WORD {
-		printf("   Yacc: insert appended output \"%s\"\n"), $2);
-		printf("   Yacc: insert appended error \"%s\"\n"), $2);
+		printf("   Yacc: insert appended output \"%s\"\n", $2);
+		printf("   Yacc: insert appended error \"%s\"\n", $2);
 		Command::_currentCommand._outFile = $2;
 		Command::_currentCommand._errFile = Command::_currentCommand._outFile;
 		Command::_currentCommand._outAppend = 1;
