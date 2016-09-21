@@ -38,7 +38,6 @@ git-commit:
 	git add test-shell/testall.out >> .local.git.out  || echo
 	git commit -a -m 'Commit' >> .local.git.out || echo
 	git push origin master
-	git push cloud master
 
 clean:
 	rm -f lex.yy.c y.tab.c  y.tab.h shell ctrl-c regular cat_grep *.o
