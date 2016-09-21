@@ -49,7 +49,10 @@ simple_command:
 		Command::_currentCommand.execute();
 	}
 	| NEWLINE 
-	| error NEWLINE { yyerrok; }
+	| error NEWLINE { 
+		Command::_currentCommand.clear();
+		yyerrok; 
+	}
 	;
 
 command_and_args:
