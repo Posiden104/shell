@@ -1,0 +1,13 @@
+SimpleCommand::SimpleCommand()
+Command::Command()
+Command:: clear()
+Command::print()
+Command::execute()
+		prompt();
+	print();
+	clear();
+	prompt();
+Command::prompt()
+main()
+	Command::_currentCommand.prompt();
+	yyparse();

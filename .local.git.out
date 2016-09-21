@@ -1,0 +1,245 @@
+On branch master
+Your branch is up-to-date with 'origin/master'.
+Untracked files:
+	.local.git.out
+
+nothing added to commit but untracked files present
+[master 28a6925] Commit
+ 2 files changed, 88 insertions(+), 1 deletion(-)
+ create mode 100644 y.tab.h
+[master f1fffe3] Commit
+ 2 files changed, 12 insertions(+), 2 deletions(-)
+[master 16ad129] Commit
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+On branch master
+Your branch is up-to-date with 'origin/master'.
+Untracked files:
+	.local.git.out
+	cat_grep
+	command.o
+	ctrl-c
+	lex.yy.c
+	lex.yy.o
+	regular
+	shell
+	y.tab.c
+	y.tab.o
+
+nothing added to commit but untracked files present
+[master c03e5a1] Commit
+ 3 files changed, 27 insertions(+), 1 deletion(-)
+[master 7b05a3c] Commit
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+[master 2e38c99] Commit
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+[master 7a20d8a] Commit
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+[master e23e2f5] Commit
+ 1 file changed, 2 deletions(-)
+[master 5d14951] Commit
+ 1 file changed, 2 insertions(+), 1 deletion(-)
+[master 7831ffe] Commit
+ 1 file changed, 13 insertions(+), 3 deletions(-)
+[master a8cf8ec] Commit
+ 1 file changed, 8 insertions(+), 1 deletion(-)
+[master b4606d5] Commit
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+[master 7ebc17d] Commit
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+On branch master
+Your branch is up-to-date with 'origin/master'.
+Untracked files:
+	.command.cc.swp
+	.command.h.swp
+	.local.git.out
+	.shell.y.swp
+	cat_grep
+	command.o
+	ctrl-c
+	lex.yy.c
+	lex.yy.o
+	regular
+	shell
+	test.txt
+	y.tab.c
+	y.tab.o
+
+nothing added to commit but untracked files present
+[master 85cbef4] Commit
+ 1 file changed, 2 insertions(+), 1 deletion(-)
+On branch master
+Your branch is up-to-date with 'origin/master'.
+Untracked files:
+	.command.cc.swp
+	.command.h.swp
+	.local.git.out
+	.shell.y.swp
+	cat_grep
+	command.o
+	ctrl-c
+	lex.yy.c
+	lex.yy.o
+	regular
+	shell
+	test.txt
+	y.tab.c
+	y.tab.o
+
+nothing added to commit but untracked files present
+On branch master
+Your branch is up-to-date with 'origin/master'.
+Untracked files:
+	.command.cc.swp
+	.command.h.swp
+	.local.git.out
+	.shell.y.swp
+	cat_grep
+	command.o
+	ctrl-c
+	lex.yy.c
+	lex.yy.o
+	regular
+	shell
+	test.txt
+	y.tab.c
+	y.tab.o
+
+nothing added to commit but untracked files present
+On branch master
+Your branch is up-to-date with 'origin/master'.
+Untracked files:
+	.command.cc.swp
+	.command.h.swp
+	.local.git.out
+	.shell.y.swp
+	cat_grep
+	command.o
+	ctrl-c
+	lex.yy.c
+	lex.yy.o
+	regular
+	shell
+	test.txt
+	y.tab.c
+	y.tab.o
+
+nothing added to commit but untracked files present
+[master 2e551e8] Commit
+ 1 file changed, 7 insertions(+), 3 deletions(-)
+[master cd49474] Commit
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+[master b8aef51] Commit
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+[master 83644db] Commit
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+[master 2797650] Commit
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+[master f21c6d3] Commit
+ 1 file changed, 11 insertions(+), 6 deletions(-)
+[master 01060cf] Commit
+ 2 files changed, 3 insertions(+), 2 deletions(-)
+[master 571fee0] Commit
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+[master b8b040a] Commit
+ 1 file changed, 1 deletion(-)
+[master 6ff5f84] Commit
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+[master 130b56a] Commit
+ 1 file changed, 8 insertions(+), 4 deletions(-)
+[master 0a387d9] Commit
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+[master 95cabab] Commit
+ 1 file changed, 2 insertions(+), 3 deletions(-)
+[master a257c38] Commit
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+[master 68dd6c9] Commit
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+[master 1ddc9c8] Commit
+ 1 file changed, 1 insertion(+)
+[master dab6f74] Commit
+ 2 files changed, 1 insertion(+), 98 deletions(-)
+ delete mode 100644 y.tab.h
+[master fa92925] Commit
+ 2 files changed, 99 insertions(+), 2 deletions(-)
+ create mode 100644 y.tab.h
+On branch master
+Your branch is up-to-date with 'origin/master'.
+Untracked files:
+	.local.git.out
+	cat_grep
+	command.o
+	ctrl-c
+	lex.yy.c
+	lex.yy.o
+	regular
+	shell
+	test.txt
+	y.tab.c
+	y.tab.o
+
+nothing added to commit but untracked files present
+[master d6d6c56] Commit
+ 1 file changed, 1 insertion(+)
+[master 506ec0d] Commit
+ 1 file changed, 1 deletion(-)
+[master b412134] Commit
+ 2 files changed, 4 insertions(+), 1 deletion(-)
+[master 203a44c] Commit
+ 1 file changed, 27 insertions(+), 2 deletions(-)
+[master 1c8e809] Commit
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+[master 4d6e131] Commit
+ 3 files changed, 13 insertions(+), 5 deletions(-)
+[master 6a8889b] Commit
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+[master 7d64f2a] Commit
+ 1 file changed, 6 deletions(-)
+[master e336f09] Commit
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+[master 77c8293] Commit
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+[master de1b990] Commit
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+On branch master
+Your branch is up-to-date with 'origin/master'.
+Untracked files:
+	.command.cc.swp
+	.local.git.out
+	.shell.y.swp
+	cat_grep
+	command.o
+	ctrl-c
+	lex.yy.c
+	lex.yy.o
+	regular
+	shell
+	test.txt
+	y.tab.c
+	y.tab.o
+
+nothing added to commit but untracked files present
+[master 136d875] Commit
+ 1 file changed, 1 insertion(+)
+[master 6f743e1] Commit
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+On branch master
+Your branch is up-to-date with 'origin/master'.
+Untracked files:
+	.local.git.out
+	cat
+	cat_grep
+	command.o
+	ctrl-c
+	lex.yy.c
+	lex.yy.o
+	regular
+	shell
+	test.txt
+	y.tab.c
+	y.tab.o
+
+nothing added to commit but untracked files present
+[master 7a1b2b1] Commit
+ 5 files changed, 21 insertions(+), 142 deletions(-)
+ rewrite test-shell/shell-out (72%)
+ delete mode 100644 y.tab.h
