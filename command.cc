@@ -131,8 +131,8 @@ Command::print()
 	printf( "\n\n" );
 	printf( "  Output(A)       Input     Error(A)     Background\n" );
 	printf( "  ------------ ------------ ------------ ------------\n" );
-	printf( "  %s%-12s %-11s %s%-12s %-11s\n", _outFile?_outFile:"default", _outAppend?"Y":"N",
-		_inFile?_inFile:"default", _errFile?_errFile:"default", _errAppend?"Y":"N",
+	printf( "  %-12s %-12s %-12s %-12s\n", _outFile?_outFile:"default", 
+		_inFile?_inFile:"default", _errFile?_errFile:"default",
 		_background?"YES":"NO");
 	printf( "\n\n" );
 	
