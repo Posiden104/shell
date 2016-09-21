@@ -44,7 +44,7 @@ command: simple_command
         ;
 
 simple_command:	
-	command_and_args iomodifier_opt bg_opt NEWLINE {
+	pipe_args iomodifier_list bg_opt NEWLINE {
 		printf("   Yacc: Execute command\n");
 		Command::_currentCommand.execute();
 	}
@@ -79,6 +79,19 @@ command_word:
 	       Command::_currentSimpleCommand = new SimpleCommand();
 	       Command::_currentSimpleCommand->insertArgument( $1 );
 	}
+	| EXIT {
+			exit(2);
+	}
+	;
+
+pipe_args:
+	pipe_args PIPE command_and_args
+	| command_and_args
+	;
+
+iomodifier_list:
+	iomodifier_list iomodifier_opt
+	| /* can be empty */
 	;
 
 iomodifier_opt:
@@ -96,7 +109,19 @@ iomodifier_opt:
 		Command::_currentCommand._outFile = $2;
 		Command::_currentCommand._errFile = Command::_currentCommand._outFile;
 	}
-	| /* can be empty */ 
+	| DGREAT WORD {
+		printf("   Yacc: insert appended output \"%s\"\n", $2);
+		Command::_currentCommand._outFile = $2;
+		Command::_currentCommand._outAppend = 1;
+	}
+	| DGREATAMP WORD {
+		printf("   Yacc: insert appended output \"%s\"\n"), $2);
+		printf("   Yacc: insert appended error \"%s\"\n"), $2);
+		Command::_currentCommand._outFile = $2;
+		Command::_currentCommand._errFile = Command::_currentCommand._outFile;
+		Command::_currentCommand._outAppend = 1;
+		Command::_currentCommand._errAppend = 1;
+	}
 	;
 
 pipe_opt:
