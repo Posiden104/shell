@@ -56,6 +56,8 @@ Command::Command()
 	_outFile = 0;
 	_inFile = 0;
 	_errFile = 0;
+	_outAppend = 0;
+	_errAppend = 0;
 	_background = 0;
 }
 
@@ -106,6 +108,8 @@ Command:: clear()
 	_inFile = 0;
 	_errFile = 0;
 	_background = 0;
+	_outAppend = 0;
+	_errAppend = 0;
 }
 
 void
@@ -125,10 +129,10 @@ Command::print()
 	}
 
 	printf( "\n\n" );
-	printf( "  Output       Input        Error        Background\n" );
+	printf( "  Output(A)       Input     Error(A)     Background\n" );
 	printf( "  ------------ ------------ ------------ ------------\n" );
-	printf( "  %-12s %-12s %-12s %-12s\n", _outFile?_outFile:"default",
-		_inFile?_inFile:"default", _errFile?_errFile:"default",
+	printf( "  %-12s%s %-11s %-12s%s %-11s\n", _outFile?_outFile:"default", _outAppend?"Y":"N",
+		_inFile?_inFile:"default", _errFile?_errFile:"default", _errAppend?"Y":"N",
 		_background?"YES":"NO");
 	printf( "\n\n" );
 	

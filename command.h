@@ -22,6 +22,8 @@ struct Command {
 	char * _outFile;
 	char * _inFile;
 	char * _errFile;
+	char * _outAppend;
+	char * _errAppend;
 	int _background;
 
 	void prompt();

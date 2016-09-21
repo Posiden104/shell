@@ -55,7 +55,8 @@ extern int yydebug;
     DLESS = 265,
     AMP = 266,
     GREATAMP = 267,
-    DGREATAMP = 268
+    DGREATAMP = 268,
+    EXIT = 269
   };
 #endif
 /* Tokens.  */
@@ -70,6 +71,7 @@ extern int yydebug;
 #define AMP 266
 #define GREATAMP 267
 #define DGREATAMP 268
+#define EXIT 269
 
 /* Value type.  */
 #if ! defined YYSTYPE && ! defined YYSTYPE_IS_DECLARED
@@ -81,7 +83,7 @@ union YYSTYPE
 		char   *string_val;
 	
 
-#line 85 "y.tab.h" /* yacc.c:1909  */
+#line 87 "y.tab.h" /* yacc.c:1909  */
 };
 
 typedef union YYSTYPE YYSTYPE;
