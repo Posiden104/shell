@@ -188,7 +188,7 @@ Command::execute()
 	close(defaulterr);
 
 	if(!_background){
-		wait(pid, 0, 0);
+		wait(pid);
 	}
 
 	// Clear to prepare for next command
