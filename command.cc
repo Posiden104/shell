@@ -160,9 +160,9 @@ Command::execute()
 	int defaulterr = dup(2);
 
 	// redirect i/o
-	dup2(_inFile, 0);
-	dup2(_outFile, 1);
-	dup2(_errFile, 2);
+	dup2(&_inFile, 0);
+	dup2(&_outFile, 1);
+	dup2(&_errFile, 2);
 
 	int pid = fork();
 
