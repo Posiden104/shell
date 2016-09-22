@@ -291,3 +291,6 @@ nothing added to commit but untracked files present
 [master 925ca58] Commit
  3 files changed, 9 insertions(+)
  delete mode 100644 testy.txt
+[master 6cf4d67] Commit
+ 3 files changed, 103 insertions(+), 1 deletion(-)
+ create mode 100644 y.tab.h
