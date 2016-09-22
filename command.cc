@@ -159,10 +159,22 @@ Command::execute()
 	int defaultout = dup(1);
 	int defaulterr = dup(2);
 
+	// redirect i/o
+	dup2(_inFile, 0);
+	dup2(_outFile, 1);
+	dup2(_errFile, 2);
+
+	int pid = fork();
+
+	if(pid == -1) {
+		perror("ERROR: fork");
+		exit(2);
+	}
+
 	SimpleCommand *curSimCmd;
 	for(int i = 0; i < _numOfSimpleCommands; i++){
 		// for every simple command, fork new process
-		int pid = fork();
+		pid = fork();
 
 		// quit on fork error
 		if(pid == -1) {
