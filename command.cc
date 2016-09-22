@@ -160,6 +160,8 @@ Command::execute()
 	for(int i = 0; i < _numOfSimpleCommands; i++){
 		curSimCmd = _simpleCommands[i];
 		printf("\n\n_numOfArguments = %d\n\n", curSimCmd->_numOfArguments);
+		printf(curSimCmd->_arguments[0]);
+		printf("\n");
 		execvp(curSimCmd->_arguments[0], (curSimCmd->_numOfArguments>1)?curSimCmd->_arguments+1:(char**)0);
 	}
 
