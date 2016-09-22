@@ -156,14 +156,35 @@ Command::execute()
 	// Setup i/o redirection
 	// and call exec
 
-	SimpleCommand *curSimCmd;
-	for(int i = 0; i < _numOfSimpleCommands; i++){
-		curSimCmd = _simpleCommands[i];
-		printf("\n\n_numOfArguments = %d\n\n", curSimCmd->_numOfArguments);
-	//	printf(curSimCmd->_arguments[0]);
-	//	printf("\n");
-	//	execvp(curSimCmd->_arguments[0], (curSimCmd->_numOfArguments>1)?curSimCmd->_arguments+1:(char**)0);
-		execvp(curSimCmd->_arguments[0], curSimCmd->_arguments);
+	pid = fork();
+
+	if(pid == -1) {
+		perror( "ERROR: fork");
+		exit(2);
+	}
+
+	if(pid == 0){
+		// child
+		SimpleCommand *curSimCmd;
+		for(int i = 0; i < _numOfSimpleCommands; i++){
+			curSimCmd = _simpleCommands[i];
+			printf("\n\n_numOfArguments = %d\n\n", curSimCmd->_numOfArguments);
+			execvp(curSimCmd->_arguments[0], curSimCmd->_arguments);
+		}
+	}
+
+	// restore in, out, err
+	dup2(defaultin, 0);
+	dup2(defaulout, 1);
+	dup2(defaulterr, 2);
+
+	// close file descriptors
+	close(defaultin);
+	close(defaultout);
+	close(defaulterr);
+
+	if(!_background){
+		wait(pid, 0, 0);
 	}
 
 	// Clear to prepare for next command
