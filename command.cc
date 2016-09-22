@@ -179,7 +179,7 @@ Command::execute()
 
 	// restore in, out, err
 	dup2(defaultin, 0);
-	dup2(defaulout, 1);
+	dup2(defaultout, 1);
 	dup2(defaulterr, 2);
 
 	// close file descriptors
