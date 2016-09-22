@@ -159,7 +159,7 @@ Command::execute()
 	SimpleCommand *curSimCmd;
 	for(int i = 0; i < _numOfSimpleCommands; i++){
 		curSimCmd = _simpleCommands[i];
-		execvp(curSimCmd->_arguements[0], curSimCmd->_arguements+1);
+		execvp(curSimCmd->_arguments[0], curSimCmd->_arguments+1);
 	}
 
 	// Clear to prepare for next command
