@@ -19,6 +19,10 @@
 
 #include "command.h"
 
+int defaultin = dup(0);
+int defaultout = dup(1);
+int defaulterr = dup(2);
+
 SimpleCommand::SimpleCommand()
 {
 	// Create available space for 5 arguments
@@ -156,7 +160,7 @@ Command::execute()
 	// Setup i/o redirection
 	// and call exec
 
-	pid = fork();
+	int pid = fork();
 
 	if(pid == -1) {
 		perror( "ERROR: fork");
