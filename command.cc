@@ -19,9 +19,6 @@
 
 #include "command.h"
 
-int defaultin = dup(0);
-int defaultout = dup(1);
-int defaulterr = dup(2);
 
 SimpleCommand::SimpleCommand()
 {
@@ -155,25 +152,40 @@ Command::execute()
 	// Print contents of Command data structure
 	print();
 
-	// Add execution here
-	// For every simple command fork a new process
 	// Setup i/o redirection
-	// and call exec
+	
+	// save default file descript 
+	int defaultin = dup(0);
+	int defaultout = dup(1);
+	int defaulterr = dup(2);
 
-	int pid = fork();
+	SimpleCommand *curSimCmd;
+	for(int i = 0; i < _numOfSimpleCommands; i++){
+		// for every simple command, fork new process
+		int pid = fork();
 
-	if(pid == -1) {
-		perror( "ERROR: fork");
-		exit(2);
-	}
+		// quit on fork error
+		if(pid == -1) {
+			perror( "ERROR: fork");
+			exit(2);
+		}
+	
+		if(pid == 0){
+			// child
+			//printf("\n\n_numOfArguments = %d\n\n", curSimCmd->_numOfArguments);
 
-	if(pid == 0){
-		// child
-		SimpleCommand *curSimCmd;
-		for(int i = 0; i < _numOfSimpleCommands; i++){
+			// grab next command
 			curSimCmd = _simpleCommands[i];
-			printf("\n\n_numOfArguments = %d\n\n", curSimCmd->_numOfArguments);
+			
+			// Execute command and args
 			execvp(curSimCmd->_arguments[0], curSimCmd->_arguments);
+		} else {
+			// parent
+			// do parenty things
+
+			// ground_child();
+			// pay_bills();
+			// grip_about_money();
 		}
 	}
 
