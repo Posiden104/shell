@@ -160,7 +160,7 @@ Command::execute()
 	for(int i = 0; i < _numOfSimpleCommands; i++){
 		curSimCmd = _simpleCommands[i];
 		printf("\n\n_numOfArguments = %d\n\n", curSimCmd->_numOfArguments);
-		execvp(curSimCmd->_arguments[0], curSimCmd->_arguments+1);
+		execvp(curSimCmd->_arguments[0], curSimCmd->_numOfArguments>1?curSimCmd->_arguments+1:(char*)0);
 	}
 
 	// Clear to prepare for next command
