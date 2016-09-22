@@ -156,6 +156,12 @@ Command::execute()
 	// Setup i/o redirection
 	// and call exec
 
+	SimpleCommand *curSimCmd;
+	for(int i = 0; i < _numOfSimpleCommands; i++){
+		curSimCmd = _simpleCommands[i];
+		execvp(curSimCmd->_arguements[0], curSimCmd->_arguements+1);
+	}
+
 	// Clear to prepare for next command
 	clear();
 	
