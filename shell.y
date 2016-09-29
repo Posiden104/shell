@@ -45,7 +45,7 @@ command: simple_command
 
 simple_command:	
 	pipe_args iomodifier_list bg_opt NEWLINE {
-		printf("   Yacc: Execute command\n");
+		/*printf("   Yacc: Execute command\n");*/
 		Command::_currentCommand.execute();
 	}
 	| NEWLINE 
@@ -71,7 +71,7 @@ argument_list:
 
 argument:
 	WORD {
-               printf("   Yacc: insert argument \"%s\"\n", $1);
+               /*printf("   Yacc: insert argument \"%s\"\n", $1);*/
 
 	       Command::_currentSimpleCommand->insertArgument( $1 );\
 	}
@@ -79,7 +79,7 @@ argument:
 
 command_word:
 	WORD {
-               printf("   Yacc: insert command \"%s\"\n", $1);
+               /*printf("   Yacc: insert command \"%s\"\n", $1);*/
 	       
 	       Command::_currentSimpleCommand = new SimpleCommand();
 	       Command::_currentSimpleCommand->insertArgument( $1 );
@@ -101,27 +101,27 @@ iomodifier_list:
 
 iomodifier_opt:
 	GREAT WORD {
-		printf("   Yacc: insert output \"%s\"\n", $2);
+		/*printf("   Yacc: insert output \"%s\"\n", $2);*/
 		Command::_currentCommand._outFile = $2;
 	}
 	| LESS WORD {
-		printf("   Yacc: insert input \"%s\"\n", $2);
+		/*printf("   Yacc: insert input \"%s\"\n", $2);*/
 		Command::_currentCommand._inFile = $2;
 	}
 	| GREATAMP WORD{
-		printf("   Yacc: insert output \"%s\"\n", $2);
-		printf("   Yacc: insert error \"%s\"\n", $2);
+		/*printf("   Yacc: insert output \"%s\"\n", $2);
+		printf("   Yacc: insert error \"%s\"\n", $2);*/
 		Command::_currentCommand._outFile = $2;
 		Command::_currentCommand._errFile = Command::_currentCommand._outFile;
 	}
 	| DGREAT WORD {
-		printf("   Yacc: insert appended output \"%s\"\n", $2);
+		/*printf("   Yacc: insert appended output \"%s\"\n", $2);*/
 		Command::_currentCommand._outFile = $2;
 		Command::_currentCommand._outAppend = 1;
 	}
 	| DGREATAMP WORD {
-		printf("   Yacc: insert appended output \"%s\"\n", $2);
-		printf("   Yacc: insert appended error \"%s\"\n", $2);
+		/*printf("   Yacc: insert appended output \"%s\"\n", $2);
+		printf("   Yacc: insert appended error \"%s\"\n", $2);*/
 		Command::_currentCommand._outFile = $2;
 		Command::_currentCommand._errFile = Command::_currentCommand._outFile;
 		Command::_currentCommand._outAppend = 1;
@@ -131,7 +131,7 @@ iomodifier_opt:
 
 bg_opt:
 	AMP {
-		printf("   Yacc: run in background\n");
+		/*printf("   Yacc: run in background\n");*/
 		Command::_currentCommand._background = 1;
 	}
 	| /* can be empty*/
