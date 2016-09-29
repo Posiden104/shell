@@ -351,3 +351,5 @@ nothing added to commit but untracked files present
  5 files changed, 14 insertions(+), 124 deletions(-)
  rewrite test-shell/shell-out (100%)
  rewrite y.tab.o (63%)
+[master 15a8f3b] Commit
+ 2 files changed, 6 insertions(+), 2 deletions(-)

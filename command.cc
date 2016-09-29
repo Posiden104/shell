@@ -219,7 +219,7 @@ Command::execute()
 	clear();
 	
 	// Print new prompt
-	//prompt();
+	prompt();
 }
 
 // Shell implementation
