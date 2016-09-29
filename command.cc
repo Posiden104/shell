@@ -194,6 +194,8 @@ Command::execute()
 			
 			// Execute command and args
 			execvp(curSimCmd->_arguments[0], curSimCmd->_arguments);
+			perror("Error: execvp");
+			exit(2);
 		} else {
 			// parent
 			// do parenty things
