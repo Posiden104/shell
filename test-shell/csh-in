@@ -1,1 +1,2 @@
-ls files > out2
+ls test3* > file-list
+ls -al `cat file-list` 

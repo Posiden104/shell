@@ -339,3 +339,5 @@ nothing added to commit but untracked files present
  delete mode 100644 .command.cc.swp
 [master e5b8dc7] Commit
  1 file changed, 3 insertions(+)
+[master eee4b6e] Commit
+ 2 files changed, 5 insertions(+), 3 deletions(-)

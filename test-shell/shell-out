@@ -1,6 +1,6 @@
 yass>   Yacc: insert command "ls"
-   Yacc: insert argument "files"
-   Yacc: insert output "out1"
+   Yacc: insert argument "test3*"
+   Yacc: insert output "file-list"
    Yacc: Execute command
 
 
@@ -8,12 +8,106 @@ yass>   Yacc: insert command "ls"
 
   #   Simple Commands
   --- ----------------------------------------------------------
-  0   "ls" 	"files" 	
+  0   "ls" 	"test3*" 	
 
 
   Output       Input        Error        Background
   ------------ ------------ ------------ ------------
-  out1         default      default      NO          
+  file-list    default      default      NO          
+
+
+yass>   Yacc: insert command "ls"
+   Yacc: insert argument "test3*"
+   Yacc: insert output "file-list"
+   Yacc: Execute command
+
+
+              COMMAND TABLE                
+
+  #   Simple Commands
+  --- ----------------------------------------------------------
+  0   "ls" 	"test3*" 	
+
+
+  Output       Input        Error        Background
+  ------------ ------------ ------------ ------------
+  file-list    default      default      NO          
+
+
+yass>   Yacc: insert command "ls"
+   Yacc: insert argument "-al"
+   Yacc: insert argument "`cat"
+   Yacc: insert argument "file-list`"
+   Yacc: Execute command
+
+
+              COMMAND TABLE                
+
+  #   Simple Commands
+  --- ----------------------------------------------------------
+  0   "ls" 	"-al" 	"`cat" 	"file-list`" 	
+
+
+  Output       Input        Error        Background
+  ------------ ------------ ------------ ------------
+  default      default      default      NO          
+
+
+yass>   Yacc: insert command "ls"
+   Yacc: insert argument "-al"
+   Yacc: insert argument "`cat"
+   Yacc: insert argument "file-list`"
+   Yacc: Execute command
+
+
+              COMMAND TABLE                
+
+  #   Simple Commands
+  --- ----------------------------------------------------------
+  0   "ls" 	"-al" 	"`cat" 	"file-list`" 	
+
+
+  Output       Input        Error        Background
+  ------------ ------------ ------------ ------------
+  default      default      default      NO          
+
+
+yass>   Yacc: insert command "ls"
+   Yacc: insert argument "-al"
+   Yacc: insert argument "`cat"
+   Yacc: insert argument "file-list`"
+   Yacc: Execute command
+
+
+              COMMAND TABLE                
+
+  #   Simple Commands
+  --- ----------------------------------------------------------
+  0   "ls" 	"-al" 	"`cat" 	"file-list`" 	
+
+
+  Output       Input        Error        Background
+  ------------ ------------ ------------ ------------
+  default      default      default      NO          
+
+
+yass>   Yacc: insert command "ls"
+   Yacc: insert argument "-al"
+   Yacc: insert argument "`cat"
+   Yacc: insert argument "file-list`"
+   Yacc: Execute command
+
+
+              COMMAND TABLE                
+
+  #   Simple Commands
+  --- ----------------------------------------------------------
+  0   "ls" 	"-al" 	"`cat" 	"file-list`" 	
+
+
+  Output       Input        Error        Background
+  ------------ ------------ ------------ ------------
+  default      default      default      NO          
 
 
 yass>
