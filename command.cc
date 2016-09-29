@@ -167,7 +167,7 @@ Command::execute()
 	//dup2(&_outFile, 1);
 	//dup2(&_errFile, 2);
 
-	/*int pid = fork();
+	int pid=0; /*= fork();
 
 	if(pid == -1) {
 		perror("ERROR: fork");
