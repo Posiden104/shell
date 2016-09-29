@@ -1263,8 +1263,8 @@ yyreduce:
     { 
 		Command::_currentCommand.clear();
 		yyerrok; 
-		printf("\n");
-		Command::_currentCommand.prompt();
+		/*printf("\n");
+		Command::_currentCommand.prompt();*/
 	}
 #line 1270 "y.tab.c" /* yacc.c:1646  */
     break;
