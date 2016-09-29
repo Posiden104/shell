@@ -49,7 +49,7 @@ simple_command:
 		Command::_currentCommand.execute();
 	}
 	| NEWLINE {
-		printf("\n\nNEW LINE!!\n\n");
+		Command::_currentCommand.execute();
 	}
 	| error NEWLINE { 
 		Command::_currentCommand.clear();
