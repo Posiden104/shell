@@ -49,7 +49,7 @@ simple_command:
 		Command::_currentCommand.execute();
 	}
 	| NEWLINE {
-		/*Command::_currentCommand.execute();*/
+		Command::_currentCommand.execute();
 	}
 	| error NEWLINE { 
 		Command::_currentCommand.clear();

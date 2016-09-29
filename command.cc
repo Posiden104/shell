@@ -158,10 +158,10 @@ Command::execute()
 	// Setup i/o redirection
 	
 	// save default file descript 
-	int defaultin = dup(0);
+	/*int defaultin = dup(0);
 	int defaultout = dup(1);
 	int defaulterr = dup(2);
-
+*/
 	// redirect i/o
 	//dup2(&_inFile, 0);
 	//dup2(&_outFile, 1);
@@ -207,7 +207,7 @@ Command::execute()
 	}
 
 	// restore in, out, err
-	dup2(defaultin, 0);
+/*	dup2(defaultin, 0);
 	dup2(defaultout, 1);
 	dup2(defaulterr, 2);
 
@@ -215,7 +215,7 @@ Command::execute()
 	close(defaultin);
 	close(defaultout);
 	close(defaulterr);
-
+*/
 	if(!_background){
 		waitpid(pid, 0, 0);
 	}
