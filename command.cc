@@ -145,7 +145,6 @@ Command::print()
 void
 Command::execute()
 {
-//	printf("\n\nSimple commands: %d\n\n", _numOfSimpleCommands);
 	// Don't do anything if there are no simple commands
 	if ( _numOfSimpleCommands == 0 ) {
 		prompt();
@@ -158,22 +157,17 @@ Command::execute()
 	// Setup i/o redirection
 	
 	// save default file descript 
-	/*int defaultin = dup(0);
+	int defaultin = dup(0);
 	int defaultout = dup(1);
 	int defaulterr = dup(2);
-*/
+
 	// redirect i/o
 	//dup2(&_inFile, 0);
 	//dup2(&_outFile, 1);
 	//dup2(&_errFile, 2);
 
-	int pid=0; /*= fork();
+	int pid = 0;
 
-	if(pid == -1) {
-		perror("ERROR: fork");
-		exit(2);
-	}
-*/
 	SimpleCommand *curSimCmd;
 	for(int i = 0; i < _numOfSimpleCommands; i++){
 		// for every simple command, fork new process
@@ -187,8 +181,6 @@ Command::execute()
 	
 		if(pid == 0){
 			// child
-			//printf("\n\n_numOfArguments = %d\n\n", curSimCmd->_numOfArguments);
-
 			// grab next command
 			curSimCmd = _simpleCommands[i];
 			
@@ -207,7 +199,7 @@ Command::execute()
 	}
 
 	// restore in, out, err
-/*	dup2(defaultin, 0);
+	dup2(defaultin, 0);
 	dup2(defaultout, 1);
 	dup2(defaulterr, 2);
 
@@ -215,7 +207,7 @@ Command::execute()
 	close(defaultin);
 	close(defaultout);
 	close(defaulterr);
-*/
+
 	if(!_background){
 		waitpid(pid, 0, 0);
 	}

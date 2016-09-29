@@ -392,3 +392,5 @@ nothing added to commit but untracked files present
  6 files changed, 5 insertions(+), 3 deletions(-)
  rewrite command.o (64%)
  rewrite shell (75%)
+[master 69ccafe] Commit
+ 2 files changed, 5 insertions(+), 1 deletion(-)
