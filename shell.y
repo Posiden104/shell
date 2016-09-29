@@ -33,7 +33,7 @@ int yylex();
 
 goal:	
 	commands
-	| NEWLINE
+	| /* can be empty */
 	;
 
 commands: 
