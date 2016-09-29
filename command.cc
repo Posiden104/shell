@@ -167,13 +167,13 @@ Command::execute()
 	//dup2(&_outFile, 1);
 	//dup2(&_errFile, 2);
 
-	int pid = fork();
+	/*int pid = fork();
 
 	if(pid == -1) {
 		perror("ERROR: fork");
 		exit(2);
 	}
-
+*/
 	SimpleCommand *curSimCmd;
 	for(int i = 0; i < _numOfSimpleCommands; i++){
 		// for every simple command, fork new process
