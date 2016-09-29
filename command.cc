@@ -215,7 +215,7 @@ Command::execute()
 	close(defaulterr);
 
 	if(!_background){
-		//waitpid(pid, 0, 0);
+		waitpid(pid, 0, 0);
 	}
 
 	// Clear to prepare for next command
