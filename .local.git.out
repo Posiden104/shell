@@ -368,3 +368,5 @@ nothing added to commit but untracked files present
  rewrite y.tab.o (61%)
 [master fd9bd03] Commit
  5 files changed, 7 insertions(+), 2 deletions(-)
+[master 9c03f1c] Commit
+ 3 files changed, 2 insertions(+)
