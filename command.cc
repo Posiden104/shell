@@ -145,7 +145,7 @@ Command::print()
 void
 Command::execute()
 {
-	printf("\n\nSimple commands: %d\n\n", _numOfSimpleCommands);
+//	printf("\n\nSimple commands: %d\n\n", _numOfSimpleCommands);
 	// Don't do anything if there are no simple commands
 	if ( _numOfSimpleCommands == 0 ) {
 		prompt();
@@ -222,7 +222,7 @@ Command::execute()
 	clear();
 	
 	// Print new prompt
-	//prompt();
+	prompt();
 }
 
 // Shell implementation
