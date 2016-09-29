@@ -33,7 +33,6 @@ int yylex();
 
 goal:	
 	commands
-	| /* can be empty */
 	;
 
 commands: 
@@ -49,7 +48,9 @@ simple_command:
 		/*printf("   Yacc: Execute command\n");*/
 		Command::_currentCommand.execute();
 	}
-	| NEWLINE 
+	| NEWLINE {
+		printf("\n\nNEW LINE!!\n\n");
+	}
 	| error NEWLINE { 
 		Command::_currentCommand.clear();
 		yyerrok; 
