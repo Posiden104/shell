@@ -111,6 +111,8 @@ Command:: clear()
 	_background = 0;
 	_outAppend = 0;
 	_errAppend = 0;
+
+	return;
 }
 
 void
@@ -220,7 +222,7 @@ Command::execute()
 	clear();
 	
 	// Print new prompt
-	prompt();
+	//prompt();
 }
 
 // Shell implementation

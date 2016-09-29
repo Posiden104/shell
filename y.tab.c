@@ -1261,7 +1261,7 @@ yyreduce:
   case 7:
 #line 51 "shell.y" /* yacc.c:1646  */
     {
-		printf("\n\nNEW LINE!!\n\n");
+		Command::_currentCommand.execute();
 	}
 #line 1267 "y.tab.c" /* yacc.c:1646  */
     break;
