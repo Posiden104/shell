@@ -33,6 +33,7 @@ int yylex();
 
 goal:	
 	commands
+	| NEWLINE
 	;
 
 commands: 
