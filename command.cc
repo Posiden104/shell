@@ -197,7 +197,7 @@ Command::execute()
 
 			// ground_child();
 			// pay_bills();
-			// grip_about_money();
+			// gripe_about_money();
 		}
 	}
 
@@ -219,7 +219,7 @@ Command::execute()
 	clear();
 	
 	// Print new prompt
-	prompt();
+	//prompt();
 }
 
 // Shell implementation

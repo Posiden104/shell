@@ -347,3 +347,7 @@ nothing added to commit but untracked files present
  delete mode 100644 test-shell/out2
 [master 67935bb] Commit
  4 files changed, 15 insertions(+), 11 deletions(-)
+[master 631948e] Commit
+ 5 files changed, 14 insertions(+), 124 deletions(-)
+ rewrite test-shell/shell-out (100%)
+ rewrite y.tab.o (63%)
