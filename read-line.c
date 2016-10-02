@@ -207,13 +207,13 @@ char * read_line() {
 		}	
 	
 		// Copy line from history
-		/*strcpy(line_buffer, history[history_index]);
-		line_length = strlen(line_buffer);
+		strcpy(line_buffer, history[history_index]);
+		/*line_length = strlen(line_buffer);
 		history_index=(history_index+1)%history_length;
-	
+		*/
 		// echo line
 		write(1, line_buffer, line_length);
-		*/
+
       } else if(ch1==91 && ch2==66){
 		//Down Arrow
 		backspace(line_length);
