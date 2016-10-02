@@ -110,7 +110,7 @@ char * read_line() {
 	  } else {
 			char * tmp = (char*)malloc(MAX_BUFFER_LINE*sizeof(char));
 			int i;
-			for(i = 0; i < MAX_BUFFER_LINE; i++;){
+			for(i = 0; i < MAX_BUFFER_LINE; i++){
 				if(line_buffer[line_pos + i] == '\0'){
 					break;
 				}
