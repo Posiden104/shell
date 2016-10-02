@@ -69,9 +69,6 @@ void myunputc(int c) {
 "&"		{
 		return AMP;
 	}
-"&"		{
-		return AMP;
-	}
 ">>"		{
 		return DGREAT;
 	}
