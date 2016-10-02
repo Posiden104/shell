@@ -207,10 +207,24 @@ char * read_line() {
 		}	
 	
 		// Copy line from history
-		strcpy(line_buffer, history[history_index]);
-		/*line_length = strlen(line_buffer);
-		history_index=(history_index+1)%history_length;
-		*/
+		history_index -= 1;
+		if(history_index <= 0) {
+			history_index = history_length - 1;
+		}
+
+		if(history[history_index] == NULL){
+			const char * blank = "";
+			strcpy(line_buffer, blank);
+		} else {
+			strcpy(line_buffer, history[history_index]);
+		}
+		line_length = strlen(line_buffer);
+		
+		
+		//strcpy(line_buffer, history[history_index]);
+		//line_length = strlen(line_buffer);
+		//history_index=(history_index+1)%history_length;
+		
 		// echo line
 		write(1, line_buffer, line_length);
 
