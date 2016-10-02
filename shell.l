@@ -17,7 +17,7 @@
 
 #include "y.tab.h"
 
-extern "C" char * read_line();
+extern "C" {char * read_line();}
 
 int mygetc(FILE * f){
 	static char *p;
