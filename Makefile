@@ -13,7 +13,7 @@ all: git-commit shell cat_grep ctrl-c regular keyboard-example read-line-example
 tty-raw-mode.o: tty-raw-mode.c
 	gcc -c tty-raw-mode.c
 
-read-line.o:
+read-line.o: read-line.c
 	gcc -c read-line.c
 
 keyboard-example: keyboard-example.c tty-raw-mode.o
