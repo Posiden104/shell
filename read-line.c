@@ -111,7 +111,7 @@ char * read_line() {
 			char * tmp = (char*)malloc(MAX_BUFFER_LINE*sizeof(char));
 			int i;
 			for(i = 0; i < MAX_BUFFER_LINE; i++){
-				if(line_buffer[line_pos + i] == '\0'){
+				if(line_buffer[linePos + i] == '\0'){
 					break;
 				}
 				tmp[i] = line_buffer[linePos + i];
