@@ -11,6 +11,8 @@
 
 #include <string.h>
 #include <unistd.h>
+#include <sys/types.h>
+#include <sys/wait.h>
 #include "y.tab.h"
 
 extern "C" char * read_line();
@@ -33,6 +35,9 @@ int mygetc(FILE * f){
 	p++;
 	return c;
 }
+
+#undef getc
+#define getc(f) mygetc(f)
 
 static  void yyunput (int c,char *buf_ptr  );
 
