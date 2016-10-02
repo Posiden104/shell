@@ -467,6 +467,7 @@ char *yytext;
 #line 11 "shell.l"
 
 #include <string.h>
+#include <unistd.h>
 #include "y.tab.h"
 
 extern "C" char * read_line();
@@ -496,7 +497,7 @@ void myunputc(int c) {
     unput(c);
 }
 
-#line 500 "lex.yy.c"
+#line 501 "lex.yy.c"
 
 #define INITIAL 0
 
@@ -705,10 +706,10 @@ YY_DECL
 		}
 
 	{
-#line 44 "shell.l"
+#line 45 "shell.l"
 
 
-#line 712 "lex.yy.c"
+#line 713 "lex.yy.c"
 
 	while ( 1 )		/* loops until end-of-file is reached */
 		{
@@ -768,91 +769,91 @@ do_action:	/* This label is used only to access EOF actions. */
 case 1:
 /* rule 1 can match eol */
 YY_RULE_SETUP
-#line 46 "shell.l"
+#line 47 "shell.l"
 {
 		return NEWLINE;
 	}
 	YY_BREAK
 case 2:
 YY_RULE_SETUP
-#line 50 "shell.l"
+#line 51 "shell.l"
 {
 		/* Discard spaces and tabs */
      	}	
 	YY_BREAK
 case 3:
 YY_RULE_SETUP
-#line 54 "shell.l"
+#line 55 "shell.l"
 {
 		return GREAT;
 	}
 	YY_BREAK
 case 4:
 YY_RULE_SETUP
-#line 57 "shell.l"
+#line 58 "shell.l"
 {
 		return LESS;
 	}
 	YY_BREAK
 case 5:
 YY_RULE_SETUP
-#line 60 "shell.l"
+#line 61 "shell.l"
 {
 		return PIPE;
 	}
 	YY_BREAK
 case 6:
 YY_RULE_SETUP
-#line 63 "shell.l"
+#line 64 "shell.l"
 {
 		return AMP;
 	}
 	YY_BREAK
 case 7:
 YY_RULE_SETUP
-#line 66 "shell.l"
+#line 67 "shell.l"
 {
 		return AMP;
 	}
 	YY_BREAK
 case 8:
 YY_RULE_SETUP
-#line 69 "shell.l"
+#line 70 "shell.l"
 {
 		return DGREAT;
 	}
 	YY_BREAK
 case 9:
 YY_RULE_SETUP
-#line 72 "shell.l"
+#line 73 "shell.l"
 {
 		return DLESS;
 	}
 	YY_BREAK
 case 10:
 YY_RULE_SETUP
-#line 75 "shell.l"
+#line 76 "shell.l"
 {
 		return GREATAMP;
 	}
 	YY_BREAK
 case 11:
 YY_RULE_SETUP
-#line 78 "shell.l"
+#line 79 "shell.l"
 {
 		return DGREATAMP;
 	}
 	YY_BREAK
 case 12:
 YY_RULE_SETUP
-#line 81 "shell.l"
+#line 82 "shell.l"
 {
 		return EXIT;
 	}
 	YY_BREAK
 case 13:
 YY_RULE_SETUP
-#line 87 "shell.l"
+#line 88 "shell.l"
 {
 		/* Assume that file names have only alpha chars */
 		yylval.string_val = strdup(yytext);
@@ -861,10 +862,10 @@ YY_RULE_SETUP
 	YY_BREAK
 case 14:
 YY_RULE_SETUP
-#line 93 "shell.l"
+#line 94 "shell.l"
 ECHO;
 	YY_BREAK
-#line 868 "lex.yy.c"
+#line 869 "lex.yy.c"
 case YY_STATE_EOF(INITIAL):
 	yyterminate();
 
@@ -1859,4 +1860,4 @@ void yyfree (void * ptr )
 
 #define YYTABLES_NAME "yytables"
 
-#line 93 "shell.l"
+#line 94 "shell.l"

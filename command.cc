@@ -160,10 +160,18 @@ Command::execute()
 	int defaultin = dup(0);
 	int defaultout = dup(1);
 	int defaulterr = dup(2);
+	int inF;
+	int outF;
+	int errF;
+	int fdpipe[2];
 
 	// redirect i/o
 	if(_inFile){
-		//dup2(&_inFile, 0);
+		inF = open(_inFile, 0_RDONLY);
+		if(inF < 0){
+			perror("In file");
+			return;
+		}
 	}
 	if(_outFile){
 		//dup2(&_outFile, 1);
