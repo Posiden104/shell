@@ -8,7 +8,19 @@ CC = g++ -g
 LEX=lex
 YACC=yacc
 
-all: git-commit shell cat_grep ctrl-c regular
+all: git-commit shell cat_grep ctrl-c regular keyboard-example read-line-example
+
+tty-raw-mode.o: tty-raw-mode.c
+	gcc -c tty-raw-mode.c
+
+read-line.o:
+	gcc -c read-line.c
+
+keyboard-example: keyboard-example.c tty-raw-mode.o
+	gcc -o keyboard-example keyboard-example.c tty-raw-mode.o
+
+read-line-example: read-line-example.c tty-raw-mode.o read-line.o
+	gcc -o read-line-example read-line-example.c tty-raw-mode.o read-line.o
 
 lex.yy.o: shell.l 
 	$(LEX) shell.l
@@ -40,5 +52,5 @@ git-commit:
 	git push origin master
 
 clean:
-	rm -f lex.yy.c y.tab.c  y.tab.h shell ctrl-c regular cat_grep *.o
+	rm -f lex.yy.c y.tab.c  y.tab.h shell ctrl-c regular cat_grep *.o keyboard-example read-line-example
 
