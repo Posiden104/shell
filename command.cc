@@ -21,6 +21,7 @@
 
 #include "command.h"
 
+extern "C" char * get_command();
 
 SimpleCommand::SimpleCommand()
 {

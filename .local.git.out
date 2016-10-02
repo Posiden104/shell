@@ -414,3 +414,6 @@ nothing added to commit but untracked files present
  2 files changed, 6 insertions(+)
 [master fcee11b] Commit
  2 files changed, 3 insertions(+), 1 deletion(-)
+[master b632dda] Commit
+ 2 files changed, 2 insertions(+)
+ rewrite command.o (82%)
