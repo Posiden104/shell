@@ -223,34 +223,41 @@ Command::execute()
 		} else {
 			pipe(fdpipe);
 			outF = fdpipe[1];
-			inF = dup(defaultout); 
+			inF = fdpipe[0]; 
 		}
 
-		// for every simple command, fork new process
-		pid = fork();
+		dup2(outF, 1);
+		close(outF);
 
-		// quit on fork error
-		if(pid == -1) {
-			perror( "ERROR: fork");
-			exit(2);
-		}
-	
-		if(pid == 0){
-			// child
-			// grab next command
-			curSimCmd = _simpleCommands[i];
-			
-			// Execute command and args
-			execvp(curSimCmd->_arguments[0], curSimCmd->_arguments);
-			perror("Error: execvp");
-			exit(2);
+		if(!strcmp(_simpleCommands[i]->arguements[0], "testing")){
+			// do something here
 		} else {
-			// parent
-			// do parenty things
-
-			// ground_child();
-			// pay_bills();
-			// gripe_about_money();
+			// for every simple command, fork new process
+			pid = fork();
+	
+			// quit on fork error
+			if(pid == -1) {
+				perror( "ERROR: fork");
+				exit(2);
+			}
+		
+			if(pid == 0){
+				// child
+				// grab next command
+				curSimCmd = _simpleCommands[i];
+				
+				// Execute command and args
+				execvp(curSimCmd->_arguments[0], curSimCmd->_arguments);
+				perror("Error: execvp");
+				exit(2);
+			} else {
+					// parent
+				// do parenty things
+	
+				// ground_child();
+				// pay_bills();
+				// gripe_about_money();
+			}
 		}
 	}
 
@@ -266,6 +273,14 @@ Command::execute()
 
 	if(!_background){
 		waitpid(pid, 0, 0);
+		char str[10] = "";
+		sprintf(str, "%d", WEXITSTATUS(status));
+		setenv("?", str, 1);
+		if(WEXITSTATUS(status) != 0){
+			if(getenv("ON_ERROR") != NULL){
+				printf(getenv("ON_ERROR"));
+			}
+		}
 	}
 
 	// Clear to prepare for next command
