@@ -230,7 +230,7 @@ Command::execute()
 		dup2(outF, 1);
 		close(outF);
 
-		if(!strcmp(_simpleCommands[i]->arguements[0], "testing")){
+		if(!strcmp(_simpleCommands[i]->_arguements[0], "testing")){
 			// do something here
 		} else {
 			// for every simple command, fork new process
