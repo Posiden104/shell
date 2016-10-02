@@ -125,7 +125,8 @@ char * read_line() {
 			linePos++;
 		
 			int charsAdded = 0;
-			for(int j=0; i < MAX_BUFFER_LINE; j++){
+			int j = 0;
+			for(j=0; i < MAX_BUFFER_LINE; j++){
 				charsAdded += 1;
 				write(1, &tmp[j], 1);
 				if(line_buffer[j] == '\0'){
