@@ -446,3 +446,7 @@ nothing added to commit but untracked files present
  create mode 100644 tty-raw-mode.c
 [master b94d221] Commit
  1 file changed, 7 insertions(+)
+On branch master
+Your branch is ahead of 'origin/master' by 2 commits.
+  (use "git push" to publish your local commits)
+nothing to commit, working directory clean
