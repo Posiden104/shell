@@ -64,6 +64,14 @@ void backspace(int n){
 	}
 }
 
+void right(){
+	
+}
+
+void left(){
+	
+}
+
 /* 
  * Input a line with some basic editing.
  */
@@ -87,39 +95,52 @@ char * read_line() {
 
     if (ch>=32 && ch < 127) {
       // It is a printable character. 
-
-      // Do echo
-      write(1,&ch,1);
-
-      // If max number of character reached return.
-      if (line_length==MAX_BUFFER_LINE-2) break; 
-
-      // add char to buffer.
-      line_buffer[line_length]=ch;
-      line_length++;
-	  linePos ++;
-    } else {
-		char * tmp = (char*)malloc(MAX_BUFFER_LINE*sizeof(char));
-		int i;
-		for(i = 0; i < MAX_BUFFER_LINE; i++;){
-			if(line_buffer[line_pos + i] == '\0'){
-				break;
+	  if(linePos == line_length){
+		 // Do echo
+		  write(1,&ch,1);
+	
+	      // If max number of character reached return.
+	      if (line_length==MAX_BUFFER_LINE-2) break; 
+	
+	      // add char to buffer.
+	      line_buffer[line_length]=ch;
+	      line_length++;
+		  linePos ++;
+	  } else {
+			char * tmp = (char*)malloc(MAX_BUFFER_LINE*sizeof(char));
+			int i;
+			for(i = 0; i < MAX_BUFFER_LINE; i++;){
+				if(line_buffer[line_pos + i] == '\0'){
+					break;
+				}
+				tmp[i] = line_buffer[linePos + i];
 			}
-			temp[i] = line_buffer[linePos + i];
+			write(1, &ch, 1);
+	
+			if(line_length ==MAX_BUFFER_LINE -2) break;
+	
+			line_buffer[linePos] = ch;
+			line_length ++;
+			linePos++;
+		
+			int charsAdded = 0;
+			for(int i=0; i < MAX_BUFFER_LINE; i++){
+				charsAdded += 1;
+				write(1, &tmp[i], 1);
+				if(line_buffer[i] == '\0'){
+					break;
+				}
+			}
+			backspace(charsAdded);
+			free(tmp);
 		}
-		write(1, &ch, 1);
-
-		if(line_length ==MAX_BUFFER_LINE -2) break;
-
-		line_buffer[linePos] = ch;
-		line_length ++;
-		linePos++;
-
-		// here 143
-	}
-    else if (ch==10) {
+	}else if (ch==10) {
       // <Enter> was typed. Return line
       
+	  if(strlen(line_buffer) != 0){
+		add_history(line_buffer);
+	  }
+
       // Print newline
       write(1,&ch,1);
 
@@ -148,6 +169,7 @@ char * read_line() {
 
       // Remove one character from buffer
       line_length--;
+	  linePos--;
     }
     else if (ch==27) {
       // Escape sequence. Read two chars more
@@ -160,36 +182,84 @@ char * read_line() {
       read(0, &ch1, 1);
       read(0, &ch2, 1);
       if (ch1==91 && ch2==65) {
-	// Up arrow. Print next line in history.
+		// Up arrow. Print next line in history.
+	
+		// Erase old line
+		// Print backspaces
+		int i = 0;
+		for (i =0; i < line_length; i++) {
+		  ch = 8;
+		  write(1,&ch,1);
+		}
+	
+			// Print spaces on top
+		for (i =0; i < line_length; i++) {
+		  ch = ' ';
+		  write(1,&ch,1);
+		}
+	
+		// Print backspaces
+		for (i =0; i < line_length; i++) {
+		  ch = 8;
+		  write(1,&ch,1);
+		}	
+	
+		// Copy line from history
+		strcpy(line_buffer, history[history_index]);
+		line_length = strlen(line_buffer);
+		history_index=(history_index+1)%history_length;
+	
+		// echo line
+		write(1, line_buffer, line_length);
+      } else if(ch1==91 && ch2==66){
+		//Down Arrow
+		backspace(line_length);
+		int i = 0;
+		for(i = 0; i < line_length; i++){
+			ch = ' ';
+			write(1, &ch, 1);
+		}
+		backspace(line_length);
+		if(history_index <= 0){
+			history_index = 0;
+		} else {
+			history_index += 1;
+			if(history_index >= history_length){
+				history_index = 0;
+			}
+		}
+		if(history[history_index] == NULL){
+			const char * not = "";
+			strcpy(line_buffer, not);
+		} else {
+			strcpy(line_buffer, history[history_index]);
+		}
+		
+		line_length = strlen(line_buffer);
+		//linePos = strlen(line_buffer);
 
-	// Erase old line
-	// Print backspaces
-	int i = 0;
-	for (i =0; i < line_length; i++) {
-	  ch = 8;
-	  write(1,&ch,1);
-	}
+		write(1, line_buffer, line_length);
+	  } else if(ch1 == 91 && ch2 == 68){
+		// Left
+		right();
+	  } else if(ch1 == 91 && ch2 == 67){
+		// right
+		right();
+	  } else if(ch1 == 91 && ch2 == 70){
+		// end
+		while(linePos < line_length){
+			// right
+			right();
+		}
+	  } else if(ch1 == 91 && ch2 == 72){
+		// home
+		while(linePos > 0){
+			// left
+			left();
+		}
+	  }
 
-	// Print spaces on top
-	for (i =0; i < line_length; i++) {
-	  ch = ' ';
-	  write(1,&ch,1);
-	}
 
-	// Print backspaces
-	for (i =0; i < line_length; i++) {
-	  ch = 8;
-	  write(1,&ch,1);
-	}	
-
-	// Copy line from history
-	strcpy(line_buffer, history[history_index]);
-	line_length = strlen(line_buffer);
-	history_index=(history_index+1)%history_length;
-
-	// echo line
-	write(1, line_buffer, line_length);
-      }
       
     }
 
