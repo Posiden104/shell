@@ -175,18 +175,57 @@ Command::execute()
 			perror("In file");
 			return;
 		}
+	} else {
+		inF = dup(defaultin);
 	}
 	if(_outFile){
-		//dup2(&_outFile, 1);
+		//
 	}
 	if(_errFile){
-		//dup2(&_errFile, 2);
+		if(_errAppend == 0){
+			errF = open(_errFile, O_CREAT | O_WRONLY, 0666);
+		} else {
+			errF = open(_errFile, O_CREAT | O_APPEND | O_WRONLY, 0666);
+		}
+		if(errF < 0){
+			perror("Error File");
+			return;
+		}
+	} else {
+		errF = dup(defaulterr);
 	}
 
 	int pid = 0;
 
 	SimpleCommand *curSimCmd;
 	for(int i = 0; i < _numOfSimpleCommands; i++){
+
+		dup2(inF, 0);
+		close(inF);
+		dup2(errF, 2);
+		close(errF);
+
+		if(i == _numOfSimpleCommands - 1) {
+			if(_outFile){
+				if(_outAppend == 0){
+					outF = open(_outFile, O_CREAT | O_WRONLY, 0666);
+				} else {
+					outF = open(_outFile, O_CREAT | O_APPEND | O_WRONLY, 0666);
+				}
+
+				if(outF < 0){
+					perror("Out File");
+					return;
+				}
+			} else {
+				outF = dup(defaultout);
+			}
+		} else {
+			pipe(fdpipe);
+			outF = fdpipe[1];
+			inF = dup(defaultout); 
+		}
+
 		// for every simple command, fork new process
 		pid = fork();
 
