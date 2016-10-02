@@ -40,7 +40,7 @@ void add_history(const char * input){
 		history = (char**) realloc(history, historyMax * sizeof(char*));
 	}
 
-	line[strlen(line)] = '/0'
+	line[strlen(line)] = '\0'
 	history[history_length] = line;
 	history_length++;
 	history_index++;
