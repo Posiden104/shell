@@ -1,5 +1,5 @@
--rw-r----- 1 jvanauke jvanauke 28336 Oct  2 15:50 command.o
-.
+total 460
+drwxr-s--- 4 jvanauke jvanauke  4096 Oct  2 18:09 .
 drwxr-s--- 6 jvanauke jvanauke  4096 Oct  2 14:42 ..
 drwxr-s--- 7 jvanauke jvanauke  4096 Oct  2 18:08 .git
 -rw-r----- 1 jvanauke jvanauke 15593 Oct  2 18:08 .local.git.out
@@ -34,3 +34,4 @@ drwxr-s--- 3 jvanauke jvanauke  4096 Oct  2 14:58 test-shell
 -rw-r----- 1 jvanauke jvanauke 48420 Oct  2 14:57 y.tab.c
 -rw-r----- 1 jvanauke jvanauke  2603 Oct  2 14:57 y.tab.h
 -rw-r----- 1 jvanauke jvanauke 18224 Oct  2 14:57 y.tab.o
+ls: cannot access /tt: No such file or directory
