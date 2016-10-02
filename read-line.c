@@ -19,15 +19,9 @@ char line_buffer[MAX_BUFFER_LINE];
 // This history does not change. 
 // Yours have to be updated.
 int history_index = 0;
-char * history [] = {
-  "ls -al | grep x", 
-  "ps -e",
-  "cat read-line-example.c",
-  "vi hello.c",
-  "make",
-  "ls -al | grep xxx | grep yyy"
-};
-int history_length = sizeof(history)/sizeof(char *);
+char ** history = NULL;
+int historyMax = 2;
+int history_length = 0;
 
 void read_line_print_usage()
 {
@@ -39,6 +33,37 @@ void read_line_print_usage()
   write(1, usage, strlen(usage));
 }
 
+void add_history(const char * input){
+	char * line = strdup(input);
+	if(history_length == historyMax +1){
+		historyMax *= 2;
+		history = (char**) realloc(history, historyMax * sizeof(char*));
+	}
+
+	line[strlen(line)] = '/0'
+	history[history_length] = line;
+	history_length++;
+	history_index++;
+}
+
+void initHistory(){
+	history = (char**)malloc(history_max * sizeof(char*));
+	const char * empty = "";
+	add_history(empty);
+}
+
+char * get_command(){
+	return history[history_index - 1];
+}
+
+void backspace(int n){
+	int i;
+	char ch = 8;
+	for(i=0; i<n; i++){
+		write(1, &ch, 1);
+	}
+}
+
 /* 
  * Input a line with some basic editing.
  */
@@ -48,15 +73,19 @@ char * read_line() {
   tty_raw_mode();
 
   line_length = 0;
+  linePos = 0;
 
   // Read one line until enter is typed
   while (1) {
+	// init history
+	if(history == NULL)
+		initHistory();
 
     // Read one character in raw mode.
     char ch;
     read(0, &ch, 1);
 
-    if (ch>=32) {
+    if (ch>=32 && ch < 127) {
       // It is a printable character. 
 
       // Do echo
@@ -68,7 +97,26 @@ char * read_line() {
       // add char to buffer.
       line_buffer[line_length]=ch;
       line_length++;
-    }
+	  linePos ++;
+    } else {
+		char * tmp = (char*)malloc(MAX_BUFFER_LINE*sizeof(char));
+		int i;
+		for(i = 0; i < MAX_BUFFER_LINE; i++;){
+			if(line_buffer[line_pos + i] == '\0'){
+				break;
+			}
+			temp[i] = line_buffer[linePos + i];
+		}
+		write(1, &ch, 1);
+
+		if(line_length ==MAX_BUFFER_LINE -2) break;
+
+		line_buffer[linePos] = ch;
+		line_length ++;
+		linePos++;
+
+		// here 143
+	}
     else if (ch==10) {
       // <Enter> was typed. Return line
       
