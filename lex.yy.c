@@ -476,7 +476,7 @@ extern "C" char * read_line();
 
 int mygetc(FILE * f){
 	static char *p;
-	char c;
+	char ret;
 
 	if(!isatty(0)){
 		return getc(f);
@@ -488,9 +488,9 @@ int mygetc(FILE * f){
 		p = s;
 	}
 
-	c = *p;
+	ret = *p;
 	p++;
-	return c;
+	return ret;
 }
 
 #undef getc
