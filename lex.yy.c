@@ -471,6 +471,9 @@ char *yytext;
 #include <sys/types.h>
 #include <sys/wait.h>
 #include <unistd.h>
+#include <fcntl.h>
+#include <assert.h>
+#include <sys/prctl.h>
 
 #include "y.tab.h"
 
@@ -504,7 +507,7 @@ void myunputc(int c) {
     unput(c);
 }
 
-#line 508 "lex.yy.c"
+#line 511 "lex.yy.c"
 
 #define INITIAL 0
 
@@ -713,10 +716,10 @@ YY_DECL
 		}
 
 	{
-#line 52 "shell.l"
+#line 55 "shell.l"
 
 
-#line 720 "lex.yy.c"
+#line 723 "lex.yy.c"
 
 	while ( 1 )		/* loops until end-of-file is reached */
 		{
@@ -776,84 +779,84 @@ do_action:	/* This label is used only to access EOF actions. */
 case 1:
 /* rule 1 can match eol */
 YY_RULE_SETUP
-#line 54 "shell.l"
+#line 57 "shell.l"
 {
 		return NEWLINE;
 	}
 	YY_BREAK
 case 2:
 YY_RULE_SETUP
-#line 58 "shell.l"
+#line 61 "shell.l"
 {
 		/* Discard spaces and tabs */
      	}	
 	YY_BREAK
 case 3:
 YY_RULE_SETUP
-#line 62 "shell.l"
+#line 65 "shell.l"
 {
 		return GREAT;
 	}
 	YY_BREAK
 case 4:
 YY_RULE_SETUP
-#line 65 "shell.l"
+#line 68 "shell.l"
 {
 		return LESS;
 	}
 	YY_BREAK
 case 5:
 YY_RULE_SETUP
-#line 68 "shell.l"
+#line 71 "shell.l"
 {
 		return PIPE;
 	}
 	YY_BREAK
 case 6:
 YY_RULE_SETUP
-#line 71 "shell.l"
+#line 74 "shell.l"
 {
 		return AMP;
 	}
 	YY_BREAK
 case 7:
 YY_RULE_SETUP
-#line 74 "shell.l"
+#line 77 "shell.l"
 {
 		return DGREAT;
 	}
 	YY_BREAK
 case 8:
 YY_RULE_SETUP
-#line 77 "shell.l"
+#line 80 "shell.l"
 {
 		return DLESS;
 	}
 	YY_BREAK
 case 9:
 YY_RULE_SETUP
-#line 80 "shell.l"
+#line 83 "shell.l"
 {
 		return GREATAMP;
 	}
 	YY_BREAK
 case 10:
 YY_RULE_SETUP
-#line 83 "shell.l"
+#line 86 "shell.l"
 {
 		return DGREATAMP;
 	}
 	YY_BREAK
 case 11:
 YY_RULE_SETUP
-#line 86 "shell.l"
+#line 89 "shell.l"
 {
 		return EXIT;
 	}
 	YY_BREAK
 case 12:
 YY_RULE_SETUP
-#line 92 "shell.l"
+#line 95 "shell.l"
 {
 		/* Assume that file names have only alpha chars */
 		yylval.string_val = strdup(yytext);
@@ -862,10 +865,10 @@ YY_RULE_SETUP
 	YY_BREAK
 case 13:
 YY_RULE_SETUP
-#line 98 "shell.l"
+#line 101 "shell.l"
 ECHO;
 	YY_BREAK
-#line 869 "lex.yy.c"
+#line 872 "lex.yy.c"
 case YY_STATE_EOF(INITIAL):
 	yyterminate();
 
@@ -1860,4 +1863,4 @@ void yyfree (void * ptr )
 
 #define YYTABLES_NAME "yytables"
 
-#line 98 "shell.l"
+#line 101 "shell.l"
