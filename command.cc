@@ -196,6 +196,7 @@ Command::execute()
 	}
 
 	int pid = 0;
+	int status;
 
 	SimpleCommand *curSimCmd;
 	for(int i = 0; i < _numOfSimpleCommands; i++){
