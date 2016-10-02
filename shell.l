@@ -12,6 +12,27 @@
 #include <string.h>
 #include "y.tab.h"
 
+extern "C" char * read_line();
+
+int mygetc(FILE * f){
+	static char *p;
+	char c;
+
+	if(!isatty(0)){
+		return getc(f);
+	}
+
+	// is tty
+	if (p == NULL || *p == 0){
+		char * s = read_line();
+		p = s;
+	}
+
+	c = *p;
+	p++;
+	return c;
+}
+
 static  void yyunput (int c,char *buf_ptr  );
 
 void myunputc(int c) {
