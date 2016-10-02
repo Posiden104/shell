@@ -10,6 +10,7 @@
 %{
 
 #include <string.h>
+#include <unistd.h>
 #include "y.tab.h"
 
 extern "C" char * read_line();
