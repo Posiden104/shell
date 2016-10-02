@@ -410,3 +410,5 @@ nothing added to commit but untracked files present
  7 files changed, 32 insertions(+), 22 deletions(-)
  rewrite lex.yy.o (68%)
  delete mode 100755 shell
+[master acce4ce] Commit
+ 2 files changed, 6 insertions(+)

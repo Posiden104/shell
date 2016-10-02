@@ -169,7 +169,7 @@ Command::execute()
 
 	// redirect i/o
 	if(_inFile){
-		inF = open(_inFile, 0_RDONLY);
+		inF = open(_inFile, O_RDONLY);
 		if(inF < 0){
 			perror("In file");
 			return;
