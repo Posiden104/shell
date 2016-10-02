@@ -406,3 +406,7 @@ nothing added to commit but untracked files present
  4 files changed, 23 insertions(+)
 [master e76f780] Commit
  3 files changed, 43 insertions(+), 19 deletions(-)
+[master bbfb535] Commit
+ 7 files changed, 32 insertions(+), 22 deletions(-)
+ rewrite lex.yy.o (68%)
+ delete mode 100755 shell
