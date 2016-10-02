@@ -47,7 +47,7 @@ void add_history(const char * input){
 }
 
 void initHistory(){
-	history = (char**)malloc(history_max * sizeof(char*));
+	history = (char**)malloc(historyMax * sizeof(char*));
 	const char * empty = "";
 	add_history(empty);
 }
