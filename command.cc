@@ -163,7 +163,7 @@ Command::execute()
 
 	// redirect i/o
 	if(_inFile){
-		dup2(&_inFile, 0);
+		//dup2(&_inFile, 0);
 	}
 	if(_outFile){
 		//dup2(&_outFile, 1);
