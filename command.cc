@@ -57,22 +57,22 @@ SimpleCommand::insertArgument( char * argument )
 		return;
 	}
 
-	if(!regexec(&re, arguement, (size_t)0, NULL, 0)){
+	if(!regexec(&re, argument, (size_t)0, NULL, 0)){
 		char * longArg = (char *)calloc(1, 1024*sizeof(char*));
 
 		int i = 0;
 		int m = 0;
-		while(arguement[i] != 0 && i < 1024){
-			if(arguement[i] != '$'){
-				longArg[m] = arguement[i];
+		while(argument[i] != 0 && i < 1024){
+			if(argument[i] != '$'){
+				longArg[m] = argument[i];
 				longArg[m+1] = "\0";
 				i++;
 				m++;
 			} else {
-				char * start = strchr((char*)(arguement+i),'{');
-				char * end = strchr((char*)(arguement+i), '}');
+				char * start = strchr((char*)(argument+i),'{');
+				char * end = strchr((char*)(argument+i), '}');
 
-				char * v = (char*)calloc(1, strlen(arguement) * sizeof(char));
+				char * v = (char*)calloc(1, strlen(argument) * sizeof(char));
 				strncat(var, start+1, end-start-1);
 				char * value = getenv(v);
 				if(value == NULL){
@@ -87,37 +87,37 @@ SimpleCommand::insertArgument( char * argument )
 				free(v);
 			}
 		}
-		arguement = strdup(longArg);
+		argument = strdup(longArg);
 	}
 
-	if(arguement[0] == "~"){
+	if(argument[0] == "~"){
 		int f = 0;
 		char * st = NULL;
 		struct passwd * pw = NULL;
-		if(arguement[1] == '/' || arguement [1] == "\0"){
+		if(argument[1] == '/' || argument [1] == "\0"){
 			pw = getpwuid(getuid());
 		} else {
-			st = strchr((char*)(arguement+1), '/');
+			st = strchr((char*)(argument+1), '/');
 			if(st != NULL){
 				char * t = NULL;
-				strncpy(t, (char*)(arguement+1), st - arguement);
+				strncpy(t, (char*)(argument+1), st - argument);
 				pw = getpwnam(t);
 			} else {
-				pw = getpwnam((char*)(arguement+1));
+				pw = getpwnam((char*)(argument+1));
 				f = 1;
 			}
 		}
 
 		const char* homedir = pw->pw_dir;
 		// free space for exp ~ and orig arg
-		char* newArg = (char*)malloc((strlen(homedir)+ strlen(arguement))*sizeof(char));
+		char* newArg = (char*)malloc((strlen(homedir)+ strlen(argument))*sizeof(char));
 		newArg[0] = '\0';
 		strcat(newArg, homedir);
 		strcat(newArg, '/');
 		if(f == 0){
-			strcat(newArg, (char*)(arguement + 1));
+			strcat(newArg, (char*)(argument + 1));
 		}
-		arguement = newArg;
+		argument = newArg;
 	}
 
 
