@@ -90,7 +90,7 @@ SimpleCommand::insertArgument( char * argument )
 		argument = strdup(longArg);
 	}
 
-	if(argument[0] == "~"){
+	if(argument[0] == '~'){
 		int f = 0;
 		char * st = NULL;
 		struct passwd * pw = NULL;
