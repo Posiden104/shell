@@ -113,7 +113,7 @@ SimpleCommand::insertArgument( char * argument )
 		char* newArg = (char*)malloc((strlen(homedir)+ strlen(argument))*sizeof(char));
 		newArg[0] = '\0';
 		strcat(newArg, homedir);
-		strcat(newArg, '/');
+		strcat(newArg, "/");
 		if(f == 0){
 			strcat(newArg, (char*)(argument + 1));
 		}
