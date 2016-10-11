@@ -12,6 +12,7 @@ struct SimpleCommand {
 	char ** _arguments;
 	
 	SimpleCommand();
+	void expandWildcardsIfNessessary(char * args);
 	void insertArgument( char * argument );
 };
 
@@ -33,6 +34,8 @@ struct Command {
 	
 	Command();
 	void insertSimpleCommand( SimpleCommand * simpleCommand );
+	void expandWildcardsIfNessessary(SimpleCommand * simpleCommand);
+	void killzombie();
 
 	static Command _currentCommand;
 	static SimpleCommand *_currentSimpleCommand;
