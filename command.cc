@@ -338,7 +338,8 @@ main(int argc, char* argv[])
 	struct sigaction sa_int;
 	sa_int.sa_handler = handle_interrupt;
 	sa_int.sa_flags = SA_RESTART;
-	sigemptyset(&sa_int, NULL);
+	sigemptyset(&sa_int.sa_mask);
+	err = sigaction(SIGINT,&sa_int, NULL);
 	if(err == -1) {
 		perror("sigint action");
 		exit(1);
