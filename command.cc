@@ -349,7 +349,7 @@ main(int argc, char* argv[])
 	signalAction.sa_handler = handle_child;
 	sigemptyset(&signalAction.sa_mask);
 	signalAction.sa_flags = SA_RESTART;
-	err = sigaction(SIGCHILD, &signalAction, NULL);
+	err = sigaction(SIGCHLD, &signalAction, NULL);
 	if(err == -1){
 		perror("sigaction");
 		exit(1);
