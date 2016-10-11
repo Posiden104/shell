@@ -595,3 +595,5 @@ nothing to commit, working directory clean
  rewrite command.o (78%)
  rewrite shell (81%)
  delete mode 100644 test-shell/out1
+[master a882f77] Commit
+ 2 files changed, 21 insertions(+), 16 deletions(-)

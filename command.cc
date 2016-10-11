@@ -65,7 +65,7 @@ SimpleCommand::insertArgument( char * argument )
 		while(argument[i] != 0 && i < 1024){
 			if(argument[i] != '$'){
 				longArg[m] = argument[i];
-				longArg[m+1] = "\0";
+				longArg[m+1] = '\0';
 				i++;
 				m++;
 			} else {
