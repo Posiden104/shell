@@ -613,3 +613,5 @@ nothing to commit, working directory clean
  5 files changed, 21 insertions(+), 5 deletions(-)
  rewrite command.o (90%)
  rewrite shell (76%)
+[master 2969d18] Commit
+ 2 files changed, 8 insertions(+), 4 deletions(-)
