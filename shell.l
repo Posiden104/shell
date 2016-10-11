@@ -98,7 +98,7 @@ void myunputc(int c) {
 					j++;
 				}
 			} else {
-				buffer[j] = yytext[i];
+				buff[j] = yytext[i];
 				j++;
 			}
 		} 
@@ -114,7 +114,7 @@ void myunputc(int c) {
 
 \"[^\n\"]*\"	{
 	char s[100];
-	for(int i = 0; i < strlen(yytext)-2; i++{
+	for(int i = 0; i < strlen(yytext)-2; i++){
 		s[i] = yytext[i+1];
 	}
 	s[strlen(yytext-2)] = '\0';
