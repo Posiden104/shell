@@ -622,3 +622,5 @@ nothing to commit, working directory clean
 [master 17e5633] Commit
  6 files changed, 35 insertions(+), 4 deletions(-)
  rewrite shell (70%)
+[master 4476a8a] Commit
+ 3 files changed, 117 insertions(+), 46 deletions(-)

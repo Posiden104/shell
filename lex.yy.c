@@ -894,7 +894,7 @@ YY_RULE_SETUP
 					j++;
 				}
 			} else {
-				buffer[j] = yytext[i];
+				buff[j] = yytext[i];
 				j++;
 			}
 		} 
@@ -916,7 +916,7 @@ YY_RULE_SETUP
 #line 115 "shell.l"
 {
 	char s[100];
-	for(int i = 0; i < strlen(yytext)-2; i++{
+	for(int i = 0; i < strlen(yytext)-2; i++){
 		s[i] = yytext[i+1];
 	}
 	s[strlen(yytext-2)] = '\0';
