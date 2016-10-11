@@ -65,12 +65,19 @@ void backspace(int n){
 	}
 }
 
-void right(){
-	
+void left(){
+	if(linePos > 0){
+		linePos--;
+		backspace(1);
+	}
 }
 
-void left(){
-	
+void right(){
+	if(linePos < line_length){
+		char c = line_buffer[linePos];
+		write(1, &c,1);
+		linePos++;
+	}
 }
 
 /* 
