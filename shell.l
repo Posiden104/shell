@@ -86,7 +86,25 @@ void myunputc(int c) {
 		return EXIT;
 	}
 
-
+[^ \t\n&<>\|]*\\[^\t\n]*	{
+		char * buff = (char*)malloc(1024*sizeof(char));
+		int i = 0;
+		int j = 0;
+		for(i = 0; i != strlen(yytext); i++){
+			if(yytext[i] == 92){
+				if(yytext[i+1] == 92){
+					buff[j] = yytext[i+1];
+					i++;
+					j++;
+				}
+			} else {
+				buffer[j] = yytext[i];
+				j++;
+			}
+		} 
+		yylval.string_val = strdup(buff);
+		return WORD;
+}
 
 [^ \t\n][^ \t\n]*  {
 		/* Assume that file names have only alpha chars */
@@ -94,3 +112,14 @@ void myunputc(int c) {
 		return WORD;
 	}
 
+\"[^\n\"]*\"	{
+	char s[100];
+	for(int i = 0; i < strlen(yytext)-2; i++{
+		s[i] = yytext[i+1];
+	}
+	s[strlen(yytext-2)] = '\0';
+	yylval.string_val = strdup(s);
+	return WORD;
+}
+
+%%
