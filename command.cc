@@ -327,7 +327,7 @@ void handle_child(int signal){
 
 int yyparse(void);
 
-main()
+main(int argc, char* argv[])
 {
 
 	setenv("SHELL", argv[0], 1);
