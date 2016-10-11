@@ -324,7 +324,7 @@ Command::execute()
 				ret = chdir(getenv("HOME"));
 			}
 			if(ret != 0){
-				sprintf(stderr, "No such file or directory\n");
+				fprintf(stderr, "No such file or directory\n");
 			}
 		} else {
 			// for every simple command, fork new process
