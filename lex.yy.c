@@ -939,7 +939,7 @@ YY_RULE_SETUP
 		j++;
 
 		char sExit[6] = "exit\n";
-		for( i = 0; sExit[i] != '\0'; i++;){
+		for( i = 0; sExit[i] != '\0'; i++){
 			sub[j] = sExit[i];
 			j++;
 		}
