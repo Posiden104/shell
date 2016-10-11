@@ -300,7 +300,7 @@ void
 Command::prompt()
 {
 	if(isatty(0)){
-		const char* p = geteng("PROMPT");
+		const char* p = getenv("PROMPT");
 		if(p != NULL){
 			printf("%s> ", p);
 		}
