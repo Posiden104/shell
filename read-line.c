@@ -29,7 +29,10 @@ void read_line_print_usage()
   char * usage = "\n"
     " ctrl-?       Print usage\n"
     " Backspace    Deletes last character\n"
-    " up arrow     See last command in the history\n";
+    " up arrow     See last command in the history\n"
+	" down arrow   See next command in the history\n"
+	" left arrow   Move cursor left\n"
+	" right arrow  Move cursor right\n";
 
   write(1, usage, strlen(usage));
 }
@@ -265,7 +268,7 @@ char * read_line() {
 		write(1, line_buffer, line_length);
 	  } else if(ch1 == 91 && ch2 == 68){
 		// Left
-		right();
+		left();
 	  } else if(ch1 == 91 && ch2 == 67){
 		// right
 		right();
