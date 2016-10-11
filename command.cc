@@ -94,7 +94,7 @@ SimpleCommand::insertArgument( char * argument )
 		int f = 0;
 		char * st = NULL;
 		struct passwd * pw = NULL;
-		if(argument[1] == '/' || argument [1] == "\0"){
+		if(argument[1] == '/' || argument [1] == '\0'){
 			pw = getpwuid(getuid());
 		} else {
 			st = strchr((char*)(argument+1), '/');
