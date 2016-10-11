@@ -18,6 +18,9 @@
 #include <fcntl.h>
 #include <string.h>
 #include <signal.h>
+#include <regex.h>
+#include <dirent.h>
+#include <pwd.h>
 
 #include "command.h"
 
