@@ -73,7 +73,7 @@ SimpleCommand::insertArgument( char * argument )
 				char * end = strchr((char*)(argument+i), '}');
 
 				char * v = (char*)calloc(1, strlen(argument) * sizeof(char));
-				strncat(var, start+1, end-start-1);
+				strncat(v, start+1, end-start-1);
 				char * value = getenv(v);
 				if(value == NULL){
 					strcat(longArg, "");
