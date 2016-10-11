@@ -106,6 +106,122 @@ void myunputc(int c) {
 		return WORD;
 }
 
+\`[^\n\`]*\`	{
+		// Subshells
+		char buff[1024];
+		char * sub = (char*)malloc(sizeof(char) * 1024);
+		int i = 0;
+		int j = 0;
+		for(i = 0; yytext[i] != '\0'; i++){
+			if(yytext[i] == '`'){
+				continue;
+			}
+			sub[j] = yytext[i];
+			j++;
+		}
+		sub[j] = '\n';
+		j++;
+
+		char sExit[6] = "exit\n";
+		for( i = 0; sExit[i] != '\0'; i++;){
+			sub[j] = sExit[i];
+			j++;
+		}
+		j++;
+		sub[j] = '\0';
+
+		int tin = dup(0);
+		int tout = dup(1);
+
+		int pP[2];
+		int cp[2];
+
+		if(pipe(pP) == -1) {
+			perror("pipe");
+			exit(2);
+		}
+		if(pipe(cP) == -1) {
+			perror("pipe");
+			exit(2);
+		}
+
+		// pP from stdin
+		dup2(pP[0], 0);
+		close(pP[0]);
+
+		//stdout to cP
+		dup2(cP[1], 1);
+		close(cP[1]);
+
+		pid_t child;
+		child = fork();
+
+		if(child == -1){
+			perror("forking");
+			exit(2);
+		}
+		if(child == 0){
+			// is child
+			dup2(cP[0], 0);
+			close(cP[0]);
+
+			dup2(pP[1], 1);
+			close(pP[1]);
+
+			char * args[2];
+			args[0] = "/homes/jvanauke/cs252/lab3-src/shell";
+			args[1] = NULL;
+			execvp(args[0], args);
+
+			perror("execvp");
+			exit(1);
+		} else {
+			// parent
+			int count = 0;
+			for(count = 0; count < strlen(sub); count++){
+				write(1, sub+count, 1);
+			}
+
+			dup2(tout, 1);
+			close(tout);
+			close(pP[0]);
+			close(pP[1]);
+			close(cP[0]);
+			close(cP[1]);
+
+			int k = 0; 
+			char c = 0;
+
+			while(read(0, &c, 1) != 0){
+				if(c == '\n'){
+					buffer[k] = ' ';
+				} else {
+					buffer[k] = c;
+				}
+				k++;
+			}
+			buffer[k] = '\n';
+
+			dup2(tin, 0);
+			close(tin);
+
+			close(pP[0]);
+			close(pP[1]);
+			close(cP[0]);
+			close(cP[1]);
+		}
+
+		waitpid(child, NULL, 0);
+
+		int c = 0;
+		int len = strlen(buffer);
+
+		while(c < len){
+			unput(buffer[len-1-c]);
+			c++;
+		}
+}
+
 [^ \t\n][^ \t\n]*  {
 		/* Assume that file names have only alpha chars */
 		yylval.string_val = strdup(yytext);
@@ -113,6 +229,7 @@ void myunputc(int c) {
 	}
 
 \"[^\n\"]*\"	{
+	// quotes
 	char s[100];
 	for(int i = 0; i < strlen(yytext)-2; i++){
 		s[i] = yytext[i+1];
