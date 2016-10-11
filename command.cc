@@ -313,13 +313,13 @@ Command::execute()
 		if(!strcmp(_simpleCommands[i]->_arguments[0], "setenv")){
 			// set environment vars
 			setenv(_simpleCommands[i]->_arguments[1], _simpleCommands[i]->_arguments[2], 1);
-		} else if(!strcmp(_simpleCommands[i]->arguments[0], "unsetenv")){
+		} else if(!strcmp(_simpleCommands[i]->_arguments[0], "unsetenv")){
 			// unset environment vars
 			unsetenv(_simpleCommands[i]->_arguments[1], _simpleCommands[i]->_arguments[2], 1);
-		} else if(!strcmp(_simpleCommands->_arguments[0], "cd")){
+		} else if(!strcmp(_simpleCommands[i]->_arguments[0], "cd")){
 			int ret;
-			if(_simpleCommands[i]->arguments[1] != NULL){
-				ret = chdir(_simpleCommands[i]->arguments[1]);
+			if(_simpleCommands[i]->_arguments[1] != NULL){
+				ret = chdir(_simpleCommands[i]->_arguments[1]);
 			} else {
 				ret = chdir(getenv("HOME"));
 			}

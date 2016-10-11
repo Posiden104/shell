@@ -609,3 +609,7 @@ nothing to commit, working directory clean
  2 files changed, 3 insertions(+), 1 deletion(-)
 [master 1f2516a] Commit
  2 files changed, 3 insertions(+), 1 deletion(-)
+[master 349ca0c] Commit
+ 5 files changed, 21 insertions(+), 5 deletions(-)
+ rewrite command.o (90%)
+ rewrite shell (76%)
