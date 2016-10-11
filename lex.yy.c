@@ -950,7 +950,7 @@ YY_RULE_SETUP
 		int tout = dup(1);
 
 		int pP[2];
-		int cp[2];
+		int cP[2];
 
 		if(pipe(pP) == -1) {
 			perror("pipe");

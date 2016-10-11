@@ -194,13 +194,13 @@ void myunputc(int c) {
 
 			while(read(0, &c, 1) != 0){
 				if(c == '\n'){
-					buffer[k] = ' ';
+					buff[k] = ' ';
 				} else {
-					buffer[k] = c;
+					buff[k] = c;
 				}
 				k++;
 			}
-			buffer[k] = '\n';
+			buff[k] = '\n';
 
 			dup2(tin, 0);
 			close(tin);
@@ -214,10 +214,10 @@ void myunputc(int c) {
 		waitpid(child, NULL, 0);
 
 		int c = 0;
-		int len = strlen(buffer);
+		int len = strlen(buff);
 
 		while(c < len){
-			unput(buffer[len-1-c]);
+			unput(buff[len-1-c]);
 			c++;
 		}
 }
