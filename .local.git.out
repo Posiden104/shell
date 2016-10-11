@@ -628,3 +628,7 @@ nothing to commit, working directory clean
  4 files changed, 4 insertions(+), 2 deletions(-)
  rewrite lex.yy.o (77%)
  rewrite shell (66%)
+[master 72f1635] Commit
+ 5 files changed, 122 insertions(+), 1 deletion(-)
+ delete mode 100644 "test-shell/\"hello"
+ rename "test-shell/world\"" => test-shell/hello world (100%)
