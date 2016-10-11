@@ -34,6 +34,12 @@ SimpleCommand::SimpleCommand()
 	_arguments = (char **) malloc( _numOfAvailableArguments * sizeof( char * ) );
 }
 
+int StringCompare(const void*a, const void*b){
+	char const *char_a = *(char const**)a;
+	char const *char_b = *(char const**)b;
+	return strcmp(char_a, char_b);
+}
+
 void
 SimpleCommand::insertArgument( char * argument )
 {
@@ -44,6 +50,77 @@ SimpleCommand::insertArgument( char * argument )
 				  _numOfAvailableArguments * sizeof( char * ) );
 	}
 	
+	const char * buffer = "^.*${[^}][^}]*}.*$";
+	regex_t re;
+	if(regcomp(&re, buffer, 0)){
+		perror("REGCOMP\n");
+		return;
+	}
+
+	if(!regexec(&re, arguement, (size_t)0, NULL, 0)){
+		char * longArg = (char *)calloc(1, 1024*sizeof(char*));
+
+		int i = 0;
+		int m = 0;
+		while(arguement[i] != 0 && i < 1024){
+			if(arguement[i] != '$'){
+				longArg[m] = arguement[i];
+				longArg[m+1] = "\0";
+				i++;
+				m++;
+			} else {
+				char * start = strchr((char*)(arguement+i),'{');
+				char * end = strchr((char*)(arguement+i), '}');
+
+				char * v = (char*)calloc(1, strlen(arguement) * sizeof(char));
+				strncat(var, start+1, end-start-1);
+				char * value = getenv(v);
+				if(value == NULL){
+					strcat(longArg, "");
+				} else {
+					strcat(longArg, value);
+				}
+				i += strlen(v) + 3;
+				if(value != NULL){
+					m += strlen(value)
+				}
+				free(v);
+			}
+		}
+		arguement = strdup(longArg);
+	}
+
+	if(arguement[0] == "~"){
+		int f = 0;
+		char * st = NULL;
+		struct passwd * pw = NULL;
+		if(arguement[1] == '/' || arguement [1] == "\0"){
+			pw = getpwuid(getuid());
+		} else {
+			st = strchr((char*)(arguement+1), '/');
+			if(st != NULL){
+				char * t = NULL;
+				strncpy(t, (char*)(arguement+1), st - arguement);
+				pw = getpwnam(t);
+			} else {
+				pw = getpwnam((char*)(arguement+1));
+				f = 1;
+			}
+		}
+
+		const char* homedir = pw->pw_dir;
+		// free space for exp ~ and orig arg
+		char* newArg = (char*)malloc((strlen(homedir)+ strlen(arguement))*sizeof(char));
+		newArg[0] = '\0';
+		strcat(newArg, homedir);
+		strcat(newArg, '/');
+		if(f == 0){
+			strcat(newArg, (char*)(arguement + 1));
+		}
+		arguement = newArg;
+	}
+
+
 	_arguments[ _numOfArguments ] = argument;
 
 	// Add NULL argument at the end
