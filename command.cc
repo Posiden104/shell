@@ -82,7 +82,7 @@ SimpleCommand::insertArgument( char * argument )
 				}
 				i += strlen(v) + 3;
 				if(value != NULL){
-					m += strlen(value)
+					m += strlen(value);
 				}
 				free(v);
 			}
