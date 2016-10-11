@@ -310,8 +310,22 @@ Command::execute()
 		dup2(outF, 1);
 		close(outF);
 
-		if(!strcmp(_simpleCommands[i]->_arguments[0], "testing")){
-			// do something here
+		if(!strcmp(_simpleCommands[i]->_arguments[0], "setenv")){
+			// set environment vars
+			setenv(_simpleCommands[i]->_arguments[1], _simpleCommands[i]->_arguments[2], 1);
+		} else if(!strcmp(_simpleCommands[i]->arguments[0], "unsetenv")){
+			// unset environment vars
+			unsetenv(_simpleCommands[i]->_arguments[1], _simpleCommands[i]->_arguments[2], 1);
+		} else if(!strcmp(_simpleCommands->_arguments[0], "cd")){
+			int ret;
+			if(_simpleCommands[i]->arguments[1] != NULL){
+				ret = chdir(_simpleCommands[i]->arguments[1]);
+			} else {
+				ret = chdir(getenv("HOME"));
+			}
+			if(ret != 0){
+				sprintf(stderr, "No such file or directory\n");
+			}
 		} else {
 			// for every simple command, fork new process
 			pid = fork();
@@ -332,7 +346,7 @@ Command::execute()
 				perror("Error: execvp");
 				exit(2);
 			} else {
-					// parent
+				// parent
 				// do parenty things
 	
 				// ground_child();
@@ -353,7 +367,7 @@ Command::execute()
 	close(defaulterr);
 
 	if(!_background){
-		waitpid(pid, 0, 0);
+		waitpid(pid, &status, 0);
 		char str[10] = "";
 		sprintf(str, "%d", WEXITSTATUS(status));
 		setenv("?", str, 1);
