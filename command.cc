@@ -296,17 +296,61 @@ Command::execute()
 void
 Command::prompt()
 {
-	printf("yass>");
+	if(isatty(0)){
+		const char* p = geteng("PROMPT");
+		if(p != NULL){
+			printf("%s> ", p);
+		}
+		else printf("myShell> ");
+	}
+
 	fflush(stdout);
 }
 
 Command Command::_currentCommand;
 SimpleCommand * Command::_currentSimpleCommand;
 
+void handle_interrupt(int signal){
+	Command::_currentCommand.clear();
+	fprintf(stderr, "\n");
+	Command::_currentCommand.prompt();
+}
+
+void handle_child(int signal){
+	while(waitpid(-1, NULL, WNOHANG) > 0){
+		//do nothing
+	}
+}
+
 int yyparse(void);
 
 main()
 {
+
+	setenv("SHELL", argv[0], 1);
+	char pid[5] = "";
+	snprintf(pid, 5, "%ld", (long)getpid());
+	setenv("$", pid, 1);
+	int err;
+	struct sigaction sa_int;
+	sa_int.sa_handler = handle_interrupt;
+	sa_int.sa_flags = SA_RESTART;
+	sigemptyset(&sa_int, NULL);
+	if(err == -1) {
+		perror("sigint action");
+		exit(1);
+	}
+
+	struct sigaction signalAction;
+	signalAction.sa_handler = handle_child;
+	sigemptyset(&signalAction.sa_mask);
+	signalAction.sa_flags = SA_RESTART;
+	err = sigaction(SIGCHILD, &signalAction, NULL);
+	if(err == -1){
+		perror("sigaction");
+		exit(1);
+	}
+
 	Command::_currentCommand.prompt();
 	yyparse();
 }

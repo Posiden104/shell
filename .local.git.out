@@ -557,3 +557,5 @@ nothing to commit, working directory clean
  delete mode 100644 y.tab.c
  delete mode 100644 y.tab.h
  delete mode 100644 y.tab.o
+[master 242b5ca] Commit
+ 1 file changed, 19 insertions(+)
