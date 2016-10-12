@@ -23,9 +23,54 @@
 %{
 //#define yylex yylex
 #include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+#include <regex.h>
+#include <dirent.h>
+#include <vector>
+#include <string> 
+#include <algorithm>
 #include "command.h"
 void yyerror(const char * s);
 int yylex();
+
+int f = 0;
+std::vector<std::string> args;
+
+void expandWildcard(char* prefix, char*suffix){
+	f = 0;
+	if(suffix[0] == 0){
+		args.push_back(strdup(prefix));
+		return;
+	}
+	char * s = NULL;
+	if(suffix[0] == '/'){
+		s = strchr((char*) (suffix+1), '/');
+		f = 1;
+	} else {
+		s = strchr(suffix, '/');
+	}
+
+	char component[1024] = "";
+	char newPrefix[1024];
+
+	if(s != NULL){
+		if(suffix[0] == '/'){
+			strncpy(compoentn, ((char*)(suffix+1)), s-suffix-1);
+			suffix = s + 1;
+		} else {
+			strncpy(component, suffix, s-suffix);
+			suffix = s + 1;
+		}
+	} else if(suffix[0] == '/'){
+		strcpy(component, ((char*)(suffix + 1)));
+		suffix = suffix + strlen(suffix);
+	} else {
+		strcpy(component, suffix);
+		suffix = suffix + strlen(suffix);
+	}
+	//73
+}
 
 %}
 
