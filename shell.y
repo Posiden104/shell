@@ -56,7 +56,7 @@ void expandWildcard(char* prefix, char*suffix){
 
 	if(s != NULL){
 		if(suffix[0] == '/'){
-			strncpy(compoentn, ((char*)(suffix+1)), s-suffix-1);
+			strncpy(component, ((char*)(suffix+1)), s-suffix-1);
 			suffix = s + 1;
 		} else {
 			strncpy(component, suffix, s-suffix);

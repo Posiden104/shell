@@ -669,3 +669,6 @@ nothing to commit, working directory clean
  5 files changed, 3 insertions(+), 1 deletion(-)
 [master a0df40d] Commit
  5 files changed, 3 insertions(+), 1 deletion(-)
+[master c337019] Commit
+ 7 files changed, 48 insertions(+), 1 deletion(-)
+ rename test-shell/hello world => "test-shell/hello world\001" (100%)
