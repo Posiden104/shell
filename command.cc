@@ -446,6 +446,14 @@ main(int argc, char* argv[])
 		exit(1);
 	}
 
+	int pid = fork();
+	if(pid == 0){
+		execvp("source", ".shellrc");
+	} else if(pid < 0){
+		perror("fork");
+		exit(2);
+	}
+
 	Command::_currentCommand.prompt();
 	yyparse();
 }

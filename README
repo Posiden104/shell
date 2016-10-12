@@ -15,6 +15,17 @@ Features that DO work:
 * zombie elimination (3.5)
 * quotes (3.6)
 * escaping (3.7)
+* environment variable expansion (3.8) 
+	- $
+	- ?
+	- !
+* tilde expansion (3.9)
+* isatty() (3.10)
+* edit mode (3.11)
+* history (3.12)
+* some subshells (3.13)
+* variable prompt (3.15)
+
 
 
 
@@ -24,3 +35,7 @@ Features that do NOT work:
 	- jobs
 	- source
 * wildcarding (3.4)
+* some env var expansion
+	- _
+	- SHELL
+* some subshells
