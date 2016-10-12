@@ -69,7 +69,106 @@ void expandWildcard(char* prefix, char*suffix){
 		strcpy(component, suffix);
 		suffix = suffix + strlen(suffix);
 	}
-	//73
+
+	if(strchr(component, '*') == NULL && strchr(component, '?') == NULL){
+		if(f = 0){
+			if(prefix == NULL || prefix[0] == 0){
+				sprintf(newPrefix, "%s", component);
+			} else {
+				sprintf(newPrefix, "%s%s", prefix, component);
+			}
+			expandWildcard(newPrefix, suffix);
+			return;
+		} else {
+			if (prefix == NULL || prefix[0] == 0){
+				sprintf(newPrefix, "/%s", component);
+			} else {
+				sprintf(newPrefix, "/%s%s", prefix, component);
+			}
+			expandWildcard(newPrefix, suffix);
+			return;
+		}
+	}
+
+	char* reg = (char*)malloc(2*strlen(component)+10);
+	char * a = component;
+	char* r = reg;
+	*r = '^';
+	r ++;
+	
+	while(*a){
+		if(*a == '*'){
+			*r = '.';
+			r++;
+			*r = '*';
+			r++;
+		} else if(*a == '?'){
+			*r = '.';
+			r++;
+		} else if(*a == '.'){
+			*r = '\\';
+			r++;
+			*r = '.';
+			r++;
+		} else {
+			*r = *a;
+			r++;
+		}
+		a++;
+	}
+	*r = '$';
+	r++;
+	*r = 0;
+
+	regex_t re;
+	int result = regcomp(&re, reg, REG_EXTENDED|REG_NOSUB);
+	if(result!= 0){
+		perror("compile");
+		return;
+	}
+
+	struct dirent * ent;
+	char * dir;
+	if(f){
+		const char * slash = "/";
+		dir = strdup(slash);
+	} else if(prefix == NULL){
+		const char * d = ".";
+		dir = strdup(d);
+	} else {
+		dir = prefix;
+	}
+
+	DIR * d = opendir(dir);
+	if(d == NULL) return;
+
+	while((ent = readdir(d)) != NULL){
+		if(regexec(&re, ent->d_name, (size_t) 0, NULL, 0) == 0){
+			if(f== 0){
+				if(prefix == NULL || prefix[0] == 0){
+					sprintf(newPrefix, "%s", ent->d_name);
+				} else {
+					sprintf(newPrefix "%s%s", prefix, ent->d_name);
+				}
+			} else {
+				if(prefix == NULL || prefix[0] == 0){
+					sprintf(newPrefix, "/%s", ent->d_name);
+				} else {
+					sprintf(newPrefix, "/%s%s", prefix, end->d_name);
+				}
+			}
+		}
+
+		if(ent->d_name[0] == '.'){
+			if(component[0] == '.'){
+				expandWildcard(newPrefix, suffix);
+			}
+		} else {
+			expandWildcard(newPrefix, suffix)
+		}
+	}
+
+
 }
 
 %}
