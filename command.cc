@@ -446,10 +446,10 @@ main(int argc, char* argv[])
 		exit(1);
 	}
 
-	int pid = fork();
-	if(pid == 0){
+	int p = fork();
+	if(p == 0){
 		execvp("source", ".shellrc");
-	} else if(pid < 0){
+	} else if(p < 0){
 		perror("fork");
 		exit(2);
 	}

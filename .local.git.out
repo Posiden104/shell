@@ -724,3 +724,6 @@ nothing to commit, working directory clean
  create mode 100644 y.tab.c
  create mode 100644 y.tab.h
  create mode 100644 y.tab.o
+[master 9d2027f] Commit
+ 4 files changed, 44 insertions(+)
+ create mode 100644 .shellrc
