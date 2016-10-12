@@ -139,7 +139,7 @@ char * read_line() {
 			for(j=0; i < MAX_BUFFER_LINE; j++){
 				charsAdded += 1;
 				write(1, &tmp[j], 1);
-				if(line_buffer[j] == '\0'){
+				if(line_buffer[linePos + j] == '\0'){
 					break;
 				}
 			}
