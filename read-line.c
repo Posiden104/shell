@@ -132,7 +132,7 @@ char * read_line() {
 	
 			line_buffer[linePos] = ch;
 			line_length ++;
-			linePos++;
+			//linePos++;
 		
 			int charsAdded = 0;
 			int j = 0;
