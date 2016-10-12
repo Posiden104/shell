@@ -132,13 +132,14 @@ char * read_line() {
 	
 			line_buffer[linePos] = ch;
 			line_length ++;
-			//linePos++;
+			linePos++;
 		
 			int charsAdded = 0;
 			int j = 0;
 			for(j=0; i < MAX_BUFFER_LINE; j++){
 				charsAdded += 1;
 				write(1, &tmp[j], 1);
+				line_buffer[linePos + j + 1] = tmp[j];
 				if(line_buffer[linePos + j] == '\0'){
 					break;
 				}
