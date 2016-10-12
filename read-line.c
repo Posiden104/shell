@@ -144,7 +144,7 @@ char * read_line() {
 					break;
 				}
 			}
-			backspace(charsAdded);
+			backspace(charsAdded - 1);
 			free(tmp);
 		}
 	}else if (ch==10) {
