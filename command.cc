@@ -448,7 +448,9 @@ main(int argc, char* argv[])
 
 	int p = fork();
 	if(p == 0){
-		const char** s = ".shellrc";
+		char** s;
+		s = new char*[8];
+		strcpy(*s, ".shellrc");
 		execvp("source", s);
 	} else if(p < 0){
 		perror("fork");
