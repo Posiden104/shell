@@ -448,7 +448,8 @@ main(int argc, char* argv[])
 
 	int p = fork();
 	if(p == 0){
-		execvp("source", ".shellrc");
+		const char* shrc = ".shellrc"
+		execvp("source", &shrc);
 	} else if(p < 0){
 		perror("fork");
 		exit(2);
