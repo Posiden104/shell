@@ -39,3 +39,8 @@ Features that do NOT work:
 	- _
 	- SHELL
 * some subshells
+* .shellrc (3.16)
+
+
+Extra features:
+* running testall multipule times without changing anything changes the final score
