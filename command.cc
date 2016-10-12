@@ -451,7 +451,8 @@ main(int argc, char* argv[])
 		char** s;
 		s = new char*[8];
 		strcpy(*s, ".shellrc");
-		execvp("source", s);
+		//execvp("source", s);
+		source(".shellrc");
 	} else if(p < 0){
 		perror("fork");
 		exit(2);
