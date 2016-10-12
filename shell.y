@@ -154,7 +154,7 @@ void expandWildcard(char* prefix, char*suffix){
 				if(prefix == NULL || prefix[0] == 0){
 					sprintf(newPrefix, "/%s", ent->d_name);
 				} else {
-					sprintf(newPrefix, "/%s%s", prefix, end->d_name);
+					sprintf(newPrefix, "/%s%s", prefix, ent->d_name);
 				}
 			}
 		}
@@ -164,7 +164,7 @@ void expandWildcard(char* prefix, char*suffix){
 				expandWildcard(newPrefix, suffix);
 			}
 		} else {
-			expandWildcard(newPrefix, suffix)
+			expandWildcard(newPrefix, suffix);
 		}
 	}
 
