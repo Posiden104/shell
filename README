@@ -1,0 +1,26 @@
+Joel Van Auken
+
+Features that DO work:
+
+* simple commands and execution (2.1)
+* File redirection (2.2)
+* pipes (2.3)
+* ctrl-C (3.1)
+* exit (3.2)
+* builtins (3.3)
+	- printenv
+	- setenv
+	- unsetenv
+	- cd
+* zombie elimination (3.5)
+* quotes (3.6)
+* escaping (3.7)
+
+
+
+Features that do NOT work:
+
+* some builtins
+	- jobs
+	- source
+* wildcarding (3.4)
