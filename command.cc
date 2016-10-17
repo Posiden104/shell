@@ -21,7 +21,7 @@
 #include <regex.h>
 #include <dirent.h>
 #include <pwd.h>
-#include <algorithm.h>
+#include <algorithm>
 #include <vector.h>
 
 #include "command.h"
