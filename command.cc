@@ -11,23 +11,22 @@
 
 #include <stdio.h>
 #include <stdlib.h>
+#include <string.h>
 #include <unistd.h>
 #include <sys/types.h>
 #include <sys/wait.h>
 #include <sys/stat.h>
 #include <fcntl.h>
-#include <string.h>
 #include <signal.h>
 #include <regex.h>
 #include <dirent.h>
 #include <pwd.h>
+#include <algorithm.h>
+#include <vector.h>
 
 #include "command.h"
 
 extern "C" char * get_command();
-
-int flag = 0;
-std::vector<std::string> arguments;
 
 SimpleCommand::SimpleCommand()
 {
@@ -107,7 +106,9 @@ SimpleCommand::insertArgument( char * argument )
 
 void
 SimpleCommand::expandWildcardsIfNessessary(char* prefix, char* suffix){
-	flag = 0;
+	int flag = 0;
+	std::vector<std::string> arguments;
+
 	if (suffix[0] == 0) {
 		arguments.push_back(strdup(prefix));
 		return;

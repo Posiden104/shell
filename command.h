@@ -10,7 +10,7 @@ struct SimpleCommand {
 	// Number of arguments
 	int _numOfArguments;
 	char ** _arguments;
-	
+
 	SimpleCommand();
 	void insertArgument( char * argument );
 	void expandWildcardsIfNessessary(char* prefix, char* suffix);
