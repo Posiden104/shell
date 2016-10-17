@@ -234,6 +234,12 @@ SimpleCommand::expandWildcardsIfNessessary(char* prefix, char* suffix){
 	}
 	closedir(d);
 
+	std::sort(arguments.begin(), arguments.end());
+	for(int i = 0; i < arguments.size(); i++) {
+		Command::_currentSimpleCommand->insertArgument(strdup(arguments.at(i).c_str()));
+	}
+	arguments.clear();
+	flag = 0;
 }
 
 char*

@@ -82,11 +82,6 @@ argument:
 				Command::_currentSimpleCommand->insertArgument( $1 );
 			} else {
 				Command::_currentSimpleCommand->expandWildcardsIfNessessary(NULL,$1);
-				std::sort(arguments.begin(), arguments.end());
-				for(int i = 0; i < arguments.size(); i++) {
-					Command::_currentSimpleCommand->insertArgument(strdup(arguments.at(i).c_str()));
-				}
-				arguments.clear();
 			}
 	}
 	| SUBSHELL {
