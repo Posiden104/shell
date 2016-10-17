@@ -864,3 +864,20 @@ nothing to commit, working directory clean
  rewrite shell (87%)
  create mode 100644 test-shell/hello world
  rewrite y.tab.o (92%)
+[master d26bbda] Commit
+ 19 files changed, 18 insertions(+), 3966 deletions(-)
+ delete mode 100755 cat_grep
+ delete mode 100644 command.o
+ delete mode 100755 ctrl-c
+ delete mode 100755 keyboard-example
+ delete mode 100644 lex.yy.c
+ delete mode 100644 lex.yy.o
+ delete mode 100755 read-line-example
+ delete mode 100644 read-line.o
+ delete mode 100755 regular
+ delete mode 100755 shell
+ delete mode 100644 test-shell/hello world
+ delete mode 100644 tty-raw-mode.o
+ delete mode 100644 y.tab.c
+ delete mode 100644 y.tab.h
+ delete mode 100644 y.tab.o

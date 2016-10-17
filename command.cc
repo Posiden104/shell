@@ -26,6 +26,9 @@
 
 extern "C" char * get_command();
 
+int flag = 0;
+std::vector<std::string> arguments;
+
 SimpleCommand::SimpleCommand()
 {
 	// Create available space for 5 arguments
@@ -91,35 +94,8 @@ SimpleCommand::insertArgument( char * argument )
 	}
 
 	if(argument[0] == '~'){
-		int f = 0;
-		char * st = NULL;
-		struct passwd * pw = NULL;
-		if(argument[1] == '/' || argument [1] == '\0'){
-			pw = getpwuid(getuid());
-		} else {
-			st = strchr((char*)(argument+1), '/');
-			if(st != NULL){
-				char * t = NULL;
-				strncpy(t, (char*)(argument+1), st - argument);
-				pw = getpwnam(t);
-			} else {
-				pw = getpwnam((char*)(argument+1));
-				f = 1;
-			}
-		}
-
-		const char* homedir = pw->pw_dir;
-		// free space for exp ~ and orig arg
-		char* newArg = (char*)malloc((strlen(homedir)+ strlen(argument))*sizeof(char));
-		newArg[0] = '\0';
-		strcat(newArg, homedir);
-		strcat(newArg, "/");
-		if(f == 0){
-			strcat(newArg, (char*)(argument + 1));
-		}
-		argument = newArg;
+		argument = expandTilde(arguement);
 	}
-
 
 	_arguments[ _numOfArguments ] = argument;
 
@@ -127,6 +103,166 @@ SimpleCommand::insertArgument( char * argument )
 	_arguments[ _numOfArguments + 1] = NULL;
 	
 	_numOfArguments++;
+}
+
+void
+SimpleCommand::expandWildcardsIfNessessary(char* prefix, char* suffix){
+	flag = 0;
+	if (suffix[0] == 0) {
+		arguments.push_back(strdup(prefix));
+		return;
+	}
+	char * s = NULL;
+	if (suffix[0] == '/') {
+		s = strchr((char*) (suffix+1), '/');
+		flag = 1;
+	} else {
+		s = strchr(suffix, '/');
+	}
+	char component[1024] = "";
+	char newPrefix[1024];
+
+	if (s != NULL) {
+		if (suffix[0] == '/') {
+			strncpy(component,((char*)(suffix+1)), s-suffix-1);
+			suffix = s + 1;
+		} else {
+			strncpy(component, suffix, s-suffix);
+			suffix = s + 1;
+		}
+	} else if (suffix[0] == '/') {
+		strcpy(component, ((char*) (suffix + 1)));
+		suffix = suffix + strlen(suffix);
+	} else {
+		strcpy(component, suffix);
+		suffix = suffix + strlen(suffix);
+	}
+
+	if (strchr(component, '*') == NULL && strchr(component, '?') == NULL) {
+		if (flag == 0) {
+			if (prefix == NULL || prefix[0] == 0) {
+				sprintf(newPrefix, "%s", component);
+			} else {
+				sprintf(newPrefix, "%s/%s", prefix, component);
+			}
+			expandWildcardIfNessessary(newPrefix, suffix);
+			return;
+		} else {
+			if (prefix == NULL || prefix[0] == 0) {
+				sprintf(newPrefix, "/%s", component);
+			} else {
+				sprintf(newPrefix, "/%s/%s", prefix, component);
+			}
+			expandWildcardIfNessessary(newPrefix, suffix);
+			return;
+		}
+	}
+	char * reg = (char*)malloc(2*strlen(component)+10);
+	char * a = component;
+	char * r = reg;
+	*r = '^'; r++;
+	while (*a) {
+		if (*a == '*') {
+			*r = '.';
+			r++;
+			*r = '*';
+			r++;
+		} else if (*a == '?') {
+			*r = '.';
+			r++;
+		} else if (*a == '.') {
+			*r = '\\';
+			r++;
+			*r = '.';
+			r++;
+		} else {
+			*r = *a;
+			r++;
+		}
+		a++;
+	}
+	*r = '$';
+	r++;
+	*r = 0;
+
+
+	regex_t re;
+	int result = regcomp(&re, reg, REG_EXTENDED|REG_NOSUB);
+	if (result != 0) {
+		perror("compile\n");
+		return;
+	}
+
+	struct dirent * ent;
+	char * dir;
+	if (flag) {
+		const char * slash = "/";
+		dir = strdup(slash);
+	} else if (prefix == NULL) {
+		const char * dot = ".";
+		dir = strdup(dot);	
+	} else { 
+		dir = prefix;
+	}
+	DIR * d = opendir(dir);
+	if (d==NULL) return;
+	
+	while ((ent = readdir(d)) != NULL) {
+		if (regexec(&re, ent->d_name, (size_t) 0, NULL, 0) == 0) {
+			if (flag == 0) {
+				if (prefix == NULL || prefix[0] == 0) {
+					sprintf(newPrefix, "%s", ent->d_name);
+				} else {
+					sprintf(newPrefix, "%s/%s", prefix, ent->d_name);
+				}
+			} else {
+				if (prefix == NULL || prefix[0] == 0) {
+					sprintf(newPrefix, "/%s", ent->d_name);
+				} else {
+					sprintf(newPrefix, "/%s/%s", prefix, ent->d_name);
+				}
+			}
+			if (ent->d_name[0] == '.') {
+				if (component[0] == '.') {
+					expandWildcardIfNessessary(newPrefix, suffix);
+				}
+			} else {
+				expandWildcardIfNessessary(newPrefix, suffix);
+			}
+		}
+	}
+	closedir(d);
+
+}
+
+char*
+SimpleCommand::expandTilde(char* arguement){
+	int f = 0;
+	char * st = NULL;
+	struct passwd * pw = NULL;
+	if(argument[1] == '/' || argument [1] == '\0'){
+		pw = getpwuid(getuid());
+	} else {
+		st = strchr((char*)(argument+1), '/');
+		if(st != NULL){
+			char * t = NULL;
+			strncpy(t, (char*)(argument+1), st - argument);
+			pw = getpwnam(t);
+		} else {
+			pw = getpwnam((char*)(argument+1));
+			f = 1;
+		}
+	}
+		const char* homedir = pw->pw_dir;
+	// free space for exp ~ and orig arg
+	char* newArg = (char*)malloc((strlen(homedir)+ strlen(argument))*sizeof(char));
+	newArg[0] = '\0';
+	strcat(newArg, homedir);
+	strcat(newArg, "/");
+	if(f == 0){
+		strcat(newArg, (char*)(argument + 1));
+	}
+	argument = newArg;
 }
 
 Command::Command()
