@@ -12,6 +12,7 @@ Features that DO work:
 	- setenv
 	- unsetenv
 	- cd
+* wildcarding (3.4)
 * zombie elimination (3.5)
 * quotes (3.6)
 * escaping (3.7)
@@ -34,7 +35,6 @@ Features that do NOT work:
 * some builtins
 	- jobs
 	- source
-* wildcarding (3.4)
 * some env var expansion
 	- _
 	- SHELL
