@@ -37,13 +37,60 @@ int yylex();
 int f = 0;
 std::vector<std::string> args;
 
-void expandWildcard(char* arg){
-	// 1. convert wildcard to regular expression
-	char * reg = (char*)malloc(2*strlen(arg)+10);
-	char * a = arg;
-	char * r = reg;
+void expandWildcard(char* prefix, char* suffix){
+flag = 0;
+	if (suffix[0] == 0) {
+		arguments.push_back(strdup(prefix));
+		return;
+	}
+	char * s = NULL;
+	if (suffix[0] == '/') {
+		s = strchr((char*) (suffix+1), '/');
+		flag = 1;
+	} else {
+		s = strchr(suffix, '/');
+	}
+	char component[1024] = "";
+	char newPrefix[1024];
 
-	// match beginning of line
+	if (s != NULL) {
+		if (suffix[0] == '/') {
+			strncpy(component,((char*)(suffix+1)), s-suffix-1);
+			suffix = s + 1;
+		} else {
+			strncpy(component, suffix, s-suffix);
+			suffix = s + 1;
+		}
+	} else if (suffix[0] == '/') {
+		strcpy(component, ((char*) (suffix + 1)));
+		suffix = suffix + strlen(suffix);
+	} else {
+		strcpy(component, suffix);
+		suffix = suffix + strlen(suffix);
+	}
+
+	if (strchr(component, '*') == NULL && strchr(component, '?') == NULL) {
+		if (flag == 0) {
+			if (prefix == NULL || prefix[0] == 0) {
+				sprintf(newPrefix, "%s", component);
+			} else {
+				sprintf(newPrefix, "%s/%s", prefix, component);
+			}
+			expandWildcard(newPrefix, suffix);
+			return;
+		} else {
+			if (prefix == NULL || prefix[0] == 0) {
+				sprintf(newPrefix, "/%s", component);
+			} else {
+				sprintf(newPrefix, "/%s/%s", prefix, component);
+			}
+			expandWildcard(newPrefix, suffix);
+			return;
+		}
+	}
+	char * reg = (char*)malloc(2*strlen(component)+10);
+	char * a = component;
+	char * r = reg;
 	*r = '^'; r++;
 	while (*a) {
 		if (*a == '*') {
@@ -65,42 +112,57 @@ void expandWildcard(char* arg){
 		}
 		a++;
 	}
-
-	// match end of line and add null char
 	*r = '$';
 	r++;
-	*r = 0;		
-
-	// 2. compile regular expression
-
-	regex_t exp;
-	
-	int expbuf = regcomp(&exp, reg, REG_EXTENDED|REG_NOSUB);
-	if(expbuf != 0) {
-		perror("compile");
-		return;
-	}
+	*r = 0;
 
 
-	// 3. list directory and add the entries as arguements
-
-	DIR * dir = opendir(".");
-	if(dir == NULL){
-		perror("opendir");
+	regex_t re;
+	int result = regcomp(&re, reg, REG_EXTENDED|REG_NOSUB);
+	if (result != 0) {
+		perror("compile\n");
 		return;
 	}
 
 	struct dirent * ent;
-	while((ent = readdir(dir))!=NULL){
-		// check if name matches
-		if(regexec(ent->d_name, expbuf) == 0){
-			// add arg
-			Command::_currentSimpleCommand->insertArguement(strdup(ent->d_name));
+	char * dir;
+	if (flag) {
+		const char * slash = "/";
+		dir = strdup(slash);
+	} else if (prefix == NULL) {
+		const char * dot = ".";
+		dir = strdup(dot);	
+	} else { 
+		dir = prefix;
+	}
+	DIR * d = opendir(dir);
+	if (d==NULL) return;
+	
+	while ((ent = readdir(d)) != NULL) {
+		if (regexec(&re, ent->d_name, (size_t) 0, NULL, 0) == 0) {
+			if (flag == 0) {
+				if (prefix == NULL || prefix[0] == 0) {
+					sprintf(newPrefix, "%s", ent->d_name);
+				} else {
+					sprintf(newPrefix, "%s/%s", prefix, ent->d_name);
+				}
+			} else {
+				if (prefix == NULL || prefix[0] == 0) {
+					sprintf(newPrefix, "/%s", ent->d_name);
+				} else {
+					sprintf(newPrefix, "/%s/%s", prefix, ent->d_name);
+				}
+			}
+			if (ent->d_name[0] == '.') {
+				if (component[0] == '.') {
+					expandWildcard(newPrefix, suffix);
+				}
+			} else {
+				expandWildcard(newPrefix, suffix);
+			}
 		}
 	}
-	closedir(dir);
-
-
+	closedir(d);
 
 }
 
