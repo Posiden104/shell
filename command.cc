@@ -23,7 +23,6 @@
 #include <pwd.h>
 #include <algorithm.h>
 #include <vector.h>
-#include <string.h>
 
 #include "command.h"
 
