@@ -73,7 +73,9 @@ void expandWildcard(char* arg){
 
 	// 2. compile regular expression
 
-	regex_t expbuf = regcomp(reg, REG_EXTENDED|REG_NOSUB);
+	regex_t exp;
+	
+	char * expbuf = regcomp(&exp, reg, REG_EXTENDED|REG_NOSUB);
 	if(expbuf == NULL) {
 		perror("compile");
 		return;
