@@ -167,11 +167,11 @@ int yyparse (void);
 void yyerror(const char * s);
 int yylex();
 
-int f = 0;
+int flag = 0;
 std::vector<std::string> arguement;
 
 void expandWildcard(char* prefix, char* suffix){
-flag = 0;
+	flag = 0;
 	if (suffix[0] == 0) {
 		arguments.push_back(strdup(prefix));
 		return;

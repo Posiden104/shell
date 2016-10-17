@@ -35,7 +35,7 @@ void yyerror(const char * s);
 int yylex();
 
 int flag = 0;
-std::vector<std::string> arguement;
+std::vector<std::string> arguments;
 
 void expandWildcard(char* prefix, char* suffix){
 	flag = 0;
