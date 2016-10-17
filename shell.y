@@ -14,7 +14,7 @@
 %token	<string_val> WORD
 
 %token 	NOTOKEN GREAT NEWLINE PIPE LESS DGREAT DLESS
-%token  AMP GREATAMP DGREATAMP EXIT
+%token  AMP GREATAMP DGREATAMP EXIT SUBSHELL
 
 %union	{
 		char   *string_val;
@@ -216,8 +216,17 @@ argument:
 			if(strchr($1, '*') == NULL && strchr($1, '?') == NULL) {
 				Command::_currentSimpleCommand->insertArgument( $1 );
 			} else {
-				expandWildcard(NULL, $1);
+				expandWildcard(NULL,$1);
+				std::sort(arguments.begin(), arguments.end());
+				for(int i = 0; i < arguments.size(); i++) {
+					Command::_currentSimpleCommand->insertArgument(strdup(arguments.at(i).c_str()));
+				}
+				arguments.clear();
+				flag = 0;
 			}
+	}
+	| SUBSHELL {
+
 	}
 	;
 

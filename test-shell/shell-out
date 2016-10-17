@@ -1,451 +1,57 @@
-README
-bgfile
-csh-in
-csh-out
-err1
-err2
-file-list
-file1.cc
-files
-hello world
-out
-out2
-shell-in
-shell-out
-test1
-test10
-test102
-test103
-test104
-test105
-test106
-test107
-test108
-test109
-test11
-test110
-test111
-test112
-test112-2
-test113
-test114
-test115
-test116
-test12
-test13
-test14
-test15
-test16
-test17
-test18
-test2
-test201
-test202
-test203
-test204
-test3
-test3-2
-test3-3
-test4
-test5
-test6
-test7
-test8
-test9
-testall
-testall.out
-ls: cannot access none: No such file or directory
-ls: cannot access none: No such file or directory
-ls: cannot access none: No such file or directory
-README
-bgfile
-csh-in
-csh-out
-err1
-err2
-file-list
-file1.cc
-files
-hello world
-out
-out2
-shell-in
-shell-out
-test1
-test10
-test102
-test103
-test104
-test105
-test106
-test107
-test108
-test109
-test11
-test110
-test111
-test112
-test112-2
-test113
-test114
-test115
-test116
-test12
-test13
-test14
-test15
-test16
-test17
-test18
-test2
-test201
-test202
-test203
-test204
-test3
-test3-2
-test3-3
-test4
-test5
-test6
-test7
-test8
-test9
-testall
-testall.out
-README
-bgfile
-csh-in
-csh-out
-err1
-err2
-file-list
-file1.cc
-files
-hello world
-out
-out2
-shell-in
-shell-out
-test1
-test10
-test102
-test103
-test104
-test105
-test106
-test107
-test108
-test109
-test11
-test110
-test111
-test112
-test112-2
-test113
-test114
-test115
-test116
-test12
-test13
-test14
-test15
-test16
-test17
-test18
-test2
-test201
-test202
-test203
-test204
-test3
-test3-2
-test3-3
-test4
-test5
-test6
-test7
-test8
-test9
-testall
-testall.out
-README
-bgfile
-csh-in
-csh-out
-err1
-err2
-file-list
-file1.cc
-files
-hello world
-out
-out2
-shell-in
-shell-out
-test1
-test10
-test102
-test103
-test104
-test105
-test106
-test107
-test108
-test109
-test11
-test110
-test111
-test112
-test112-2
-test113
-test114
-test115
-test116
-test12
-test13
-test14
-test15
-test16
-test17
-test18
-test2
-test201
-test202
-test203
-test204
-test3
-test3-2
-test3-3
-test4
-test5
-test6
-test7
-test8
-test9
-testall
-testall.out
-README
-bgfile
-csh-in
-csh-out
-err1
-err2
-file-list
-file1.cc
-files
-hello world
-out
-out2
-shell-in
-shell-out
-test1
-test10
-test102
-test103
-test104
-test105
-test106
-test107
-test108
-test109
-test11
-test110
-test111
-test112
-test112-2
-test113
-test114
-test115
-test116
-test12
-test13
-test14
-test15
-test16
-test17
-test18
-test2
-test201
-test202
-test203
-test204
-test3
-test3-2
-test3-3
-test4
-test5
-test6
-test7
-test8
-test9
-testall
-testall.out
-README
-bgfile
-csh-in
-csh-out
-err1
-err2
-file-list
-file1.cc
-files
-hello world
-out
-out2
-shell-in
-shell-out
-test1
-test10
-test102
-test103
-test104
-test105
-test106
-test107
-test108
-test109
-test11
-test110
-test111
-test112
-test112-2
-test113
-test114
-test115
-test116
-test12
-test13
-test14
-test15
-test16
-test17
-test18
-test2
-test201
-test202
-test203
-test204
-test3
-test3-2
-test3-3
-test4
-test5
-test6
-test7
-test8
-test9
-testall
-testall.out
-README
-bgfile
-csh-in
-csh-out
-err1
-err2
-file-list
-file1.cc
-files
-hello world
-out
-out2
-shell-in
-shell-out
-test1
-test10
-test102
-test103
-test104
-test105
-test106
-test107
-test108
-test109
-test11
-test110
-test111
-test112
-test112-2
-test113
-test114
-test115
-test116
-test12
-test13
-test14
-test15
-test16
-test17
-test18
-test2
-test201
-test202
-test203
-test204
-test3
-test3-2
-test3-3
-test4
-test5
-test6
-test7
-test8
-test9
-testall
-testall.out
-README
-bgfile
-csh-in
-csh-out
-err1
-err2
-file-list
-file1.cc
-files
-hello world
-out
-out2
-shell-in
-shell-out
-test1
-test10
-test102
-test103
-test104
-test105
-test106
-test107
-test108
-test109
-test11
-test110
-test111
-test112
-test112-2
-test113
-test114
-test115
-test116
-test12
-test13
-test14
-test15
-test16
-test17
-test18
-test2
-test201
-test202
-test203
-test204
-test3
-test3-2
-test3-3
-test4
-test5
-test6
-test7
-test8
-test9
-testall
-testall.out
+total 208
+drwxr-s--- 3 jvanauke jvanauke 4096 Oct 17 15:37 .
+drwxr-s--- 4 jvanauke jvanauke 4096 Oct 17 15:36 ..
+-rwxr-x--- 1 jvanauke jvanauke  718 Sep 15 10:06 README
+-rwxr-x--- 1 jvanauke jvanauke    0 Oct 17 15:36 bgfile
+-rw-r----- 1 jvanauke jvanauke   57 Oct 17 15:37 err1
+-rw-r----- 1 jvanauke jvanauke   57 Oct 17 15:36 err2
+-rwxr-x--- 1 jvanauke jvanauke  413 Oct 17 15:37 file-list
+-rwxr-x--- 1 jvanauke jvanauke 3727 Sep 15 10:06 file1.cc
+drwxr-s--- 2 jvanauke jvanauke 4096 Sep 15 10:06 files
+-rw-r----- 1 jvanauke jvanauke    0 Oct 17 15:37 hello world
+-rw-r----- 1 jvanauke jvanauke    0 Oct 17 15:36 hello world
+-rwxr-x--- 1 jvanauke jvanauke  233 Oct 17 15:37 out
+-rw-r----- 1 jvanauke jvanauke   47 Oct 17 15:37 shell-in
+-rw-r----- 1 jvanauke jvanauke    0 Oct 17 15:37 shell-out
+-rwxr-x--- 1 jvanauke jvanauke  279 Sep 15 10:06 test1
+-rwxr-x--- 1 jvanauke jvanauke  659 Sep 15 10:06 test10
+-rwxr-x--- 1 jvanauke jvanauke  297 Sep 15 10:06 test102
+-rwxr-x--- 1 jvanauke jvanauke  329 Sep 15 10:06 test103
+-rwxr-x--- 1 jvanauke jvanauke  303 Sep 15 10:06 test104
+-rwxr-x--- 1 jvanauke jvanauke  294 Sep 15 10:06 test105
+-rwxr-x--- 1 jvanauke jvanauke  297 Sep 15 10:06 test106
+-rwxr-x--- 1 jvanauke jvanauke  325 Sep 15 10:06 test107
+-rwxr-x--- 1 jvanauke jvanauke  312 Sep 15 10:06 test108
+-rwxr-x--- 1 jvanauke jvanauke  324 Sep 15 10:06 test109
+-rwxr-x--- 1 jvanauke jvanauke  281 Sep 15 10:06 test11
+-rwxr-x--- 1 jvanauke jvanauke  321 Sep 15 10:06 test110
+-rwxr-x--- 1 jvanauke jvanauke  385 Sep 15 10:06 test111
+-rwxr-x--- 1 jvanauke jvanauke  285 Sep 15 10:06 test112
+-rwxr-x--- 1 jvanauke jvanauke  298 Sep 15 10:06 test112-2
+-rwxr-x--- 1 jvanauke jvanauke  358 Sep 15 10:06 test113
+-rwxr-x--- 1 jvanauke jvanauke  409 Sep 15 10:06 test114
+-rwxr-x--- 1 jvanauke jvanauke  285 Sep 15 10:06 test115
+-rwxr-x--- 1 jvanauke jvanauke  272 Sep 15 10:06 test116
+-rwxr-x--- 1 jvanauke jvanauke  459 Sep 15 10:06 test12
+-rwxr-x--- 1 jvanauke jvanauke  328 Sep 15 10:06 test13
+-rwxr-x--- 1 jvanauke jvanauke  371 Sep 15 10:06 test14
+-rwxr-x--- 1 jvanauke jvanauke  439 Sep 15 10:06 test15
+-rwxr-x--- 1 jvanauke jvanauke  333 Sep 15 10:06 test16
+-rwxr-x--- 1 jvanauke jvanauke  323 Sep 15 10:06 test17
+-rwxr-x--- 1 jvanauke jvanauke  308 Sep 15 10:06 test18
+-rwxr-x--- 1 jvanauke jvanauke  275 Sep 15 10:06 test2
+-rwxr-x--- 1 jvanauke jvanauke  483 Sep 15 10:06 test201
+-rwxr-x--- 1 jvanauke jvanauke 1454 Sep 15 10:06 test202
+-rwxr-x--- 1 jvanauke jvanauke  398 Sep 15 10:06 test203
+-rwxr-x--- 1 jvanauke jvanauke  555 Sep 15 10:06 test204
+-rwxr-x--- 1 jvanauke jvanauke  309 Sep 15 10:06 test3
+-rwxr-x--- 1 jvanauke jvanauke  450 Sep 15 10:06 test3-2
+-rwxr-x--- 1 jvanauke jvanauke  575 Sep 15 10:06 test3-3
+-rwxr-x--- 1 jvanauke jvanauke  282 Sep 15 10:06 test4
+-rwxr-x--- 1 jvanauke jvanauke  268 Sep 15 10:06 test5
+-rwxr-x--- 1 jvanauke jvanauke  279 Sep 15 10:06 test6
+-rwxr-x--- 1 jvanauke jvanauke  345 Sep 15 10:06 test7
+-rwxr-x--- 1 jvanauke jvanauke  366 Sep 15 10:06 test8
+-rwxr-x--- 1 jvanauke jvanauke  247 Sep 15 10:06 test9
+-rwxr-x--- 1 jvanauke jvanauke 4075 Sep 15 10:06 testall
+-rw-r----- 1 jvanauke jvanauke   36 Oct 17 15:36 testall.out
