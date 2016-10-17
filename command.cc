@@ -22,7 +22,7 @@
 #include <dirent.h>
 #include <pwd.h>
 #include <algorithm>
-#include <vector.h>
+#include <vector>
 
 #include "command.h"
 
