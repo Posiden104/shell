@@ -135,12 +135,8 @@ void myunputc(int c) {
 
 		int pP[2];
 		int cP[2];
-
-		if(pipe(pP) == -1) {
-			perror("pipe");
-			exit(2);
-		}
-		if(pipe(cP) == -1) {
+	
+		if(pipe(cP) == -1 || pipe(pP) == -1) {
 			perror("pipe");
 			exit(2);
 		}
@@ -200,7 +196,7 @@ void myunputc(int c) {
 				}
 				k++;
 			}
-			buff[k] = '\n';
+			buff[k] = '\0';
 
 			dup2(tin, 0);
 			close(tin);
@@ -230,12 +226,12 @@ void myunputc(int c) {
 
 \"[^\n\"]*\"	{
 	// quotes
-	char s[100];
+	char quote[100];
 	for(int i = 0; i < strlen(yytext)-2; i++){
-		s[i] = yytext[i+1];
+		quote[i] = yytext[i+1];
 	}
-	s[strlen(yytext-2)] = '\0';
-	yylval.string_val = strdup(s);
+	quote[strlen(yytext-2)] = '\0';
+	yylval.string_val = strdup(quote);
 	return WORD;
 }
 

@@ -1,18 +1,19 @@
 total 208
-drwxr-s--- 3 jvanauke jvanauke 4096 Oct 17 15:37 .
-drwxr-s--- 4 jvanauke jvanauke 4096 Oct 17 15:36 ..
+drwxr-s--- 3 jvanauke jvanauke 4096 Oct 17 15:42 .
+drwxr-s--- 4 jvanauke jvanauke 4096 Oct 17 15:42 ..
 -rwxr-x--- 1 jvanauke jvanauke  718 Sep 15 10:06 README
--rwxr-x--- 1 jvanauke jvanauke    0 Oct 17 15:36 bgfile
--rw-r----- 1 jvanauke jvanauke   57 Oct 17 15:37 err1
--rw-r----- 1 jvanauke jvanauke   57 Oct 17 15:36 err2
--rwxr-x--- 1 jvanauke jvanauke  413 Oct 17 15:37 file-list
+-rwxr-x--- 1 jvanauke jvanauke    0 Oct 17 15:42 bgfile
+-rw-r----- 1 jvanauke jvanauke   57 Oct 17 15:42 err1
+-rw-r----- 1 jvanauke jvanauke   57 Oct 17 15:42 err2
+-rwxr-x--- 1 jvanauke jvanauke   22 Oct 17 15:42 file-list
 -rwxr-x--- 1 jvanauke jvanauke 3727 Sep 15 10:06 file1.cc
 drwxr-s--- 2 jvanauke jvanauke 4096 Sep 15 10:06 files
+-rw-r----- 1 jvanauke jvanauke    0 Oct 17 15:42 hello world
 -rw-r----- 1 jvanauke jvanauke    0 Oct 17 15:37 hello world
 -rw-r----- 1 jvanauke jvanauke    0 Oct 17 15:36 hello world
--rwxr-x--- 1 jvanauke jvanauke  233 Oct 17 15:37 out
--rw-r----- 1 jvanauke jvanauke   47 Oct 17 15:37 shell-in
--rw-r----- 1 jvanauke jvanauke    0 Oct 17 15:37 shell-out
+-rwxr-x--- 1 jvanauke jvanauke  233 Oct 17 15:42 out
+-rw-r----- 1 jvanauke jvanauke   47 Oct 17 15:42 shell-in
+-rw-r----- 1 jvanauke jvanauke    0 Oct 17 15:42 shell-out
 -rwxr-x--- 1 jvanauke jvanauke  279 Sep 15 10:06 test1
 -rwxr-x--- 1 jvanauke jvanauke  659 Sep 15 10:06 test10
 -rwxr-x--- 1 jvanauke jvanauke  297 Sep 15 10:06 test102
@@ -54,4 +55,4 @@ drwxr-s--- 2 jvanauke jvanauke 4096 Sep 15 10:06 files
 -rwxr-x--- 1 jvanauke jvanauke  366 Sep 15 10:06 test8
 -rwxr-x--- 1 jvanauke jvanauke  247 Sep 15 10:06 test9
 -rwxr-x--- 1 jvanauke jvanauke 4075 Sep 15 10:06 testall
--rw-r----- 1 jvanauke jvanauke   36 Oct 17 15:36 testall.out
+-rw-r----- 1 jvanauke jvanauke   36 Oct 17 15:37 testall.out

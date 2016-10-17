@@ -56,7 +56,8 @@ extern int yydebug;
     AMP = 266,
     GREATAMP = 267,
     DGREATAMP = 268,
-    EXIT = 269
+    EXIT = 269,
+    SUBSHELL = 270
   };
 #endif
 /* Tokens.  */
@@ -72,6 +73,7 @@ extern int yydebug;
 #define GREATAMP 267
 #define DGREATAMP 268
 #define EXIT 269
+#define SUBSHELL 270
 
 /* Value type.  */
 #if ! defined YYSTYPE && ! defined YYSTYPE_IS_DECLARED
@@ -83,7 +85,7 @@ union YYSTYPE
 		char   *string_val;
 	
 
-#line 87 "y.tab.h" /* yacc.c:1909  */
+#line 89 "y.tab.h" /* yacc.c:1909  */
 };
 
 typedef union YYSTYPE YYSTYPE;
