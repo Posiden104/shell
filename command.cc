@@ -108,7 +108,7 @@ SimpleCommand::insertArgument( char * argument )
 
 void
 SimpleCommand::expandWildcardsIfNessessary(char* prefix, char* suffix){ // , std::vector<std::string> arguments){
-	
+	flag = 0;
 	if (suffix[0] == 0) {
 		arguments.push_back(strdup(prefix));
 		return;
