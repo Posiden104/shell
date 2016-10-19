@@ -93,7 +93,7 @@ SimpleCommand::insertArgument( char * argument )
 	}
 
 	if(argument[0] == '~'){
-		argument = expandTilde(arguement);
+		argument = expandTilde(argument);
 	}
 
 	_arguments[ _numOfArguments ] = argument;
@@ -104,10 +104,12 @@ SimpleCommand::insertArgument( char * argument )
 	_numOfArguments++;
 }
 
+SimpleCommand::int flag = 0;
+SimpleCommand::std::vector<string> arguments;
+
 void
 SimpleCommand::expandWildcardsIfNessessary(char* prefix, char* suffix){
-	int flag = 0;
-	std::vector<std::string> arguments;
+	
 
 	if (suffix[0] == 0) {
 		arguments.push_back(strdup(prefix));

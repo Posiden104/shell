@@ -900,3 +900,5 @@ nothing to commit, working directory clean
  create mode 100644 y.tab.o
 [master 2d7f93b] Commit
  2 files changed, 6 insertions(+), 1 deletion(-)
+[master ba4bcd3] Commit
+ 1 file changed, 2 insertions(+)
