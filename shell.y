@@ -81,8 +81,9 @@ argument:
 			if(strchr($1, '*') == NULL && strchr($1, '?') == NULL) {
 				Command::_currentSimpleCommand->insertArgument( $1 );
 			} else {
+				std::vector<std::string> arguments;
 				Command::_currentSimpleCommand->flag = 0;
-				Command::_currentSimpleCommand->expandWildcardsIfNessessary(NULL,$1);
+				Command::_currentSimpleCommand->expandWildcardsIfNessessary(NULL,$1,arguments);
 			}
 	}
 	| SUBSHELL {

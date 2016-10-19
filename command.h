@@ -10,12 +10,12 @@ struct SimpleCommand {
 	// Number of arguments
 	int _numOfArguments;
 	char ** _arguments;
-	vector<string> arguments;
+	//vector<string> arguments;
 	int flag;
 
 	SimpleCommand();
 	void insertArgument( char * argument );
-	void expandWildcardsIfNessessary(char* prefix, char* suffix);
+	void expandWildcardsIfNessessary(char* prefix, char* suffix, std::vector<std::string> arguements);
 	char* expandTilde(char* argument);
 };
 

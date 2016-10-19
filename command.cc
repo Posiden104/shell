@@ -11,6 +11,7 @@
 
 #include <stdio.h>
 #include <stdlib.h>
+#include <string.h>
 #include <string>
 #include <unistd.h>
 #include <sys/types.h>
@@ -106,7 +107,7 @@ SimpleCommand::insertArgument( char * argument )
 
 
 void
-SimpleCommand::expandWildcardsIfNessessary(char* prefix, char* suffix){
+SimpleCommand::expandWildcardsIfNessessary(char* prefix, char* suffix, std::vector<std::string> arguements){
 	
 	if (suffix[0] == 0) {
 		arguments.push_back(strdup(prefix));
@@ -145,7 +146,7 @@ SimpleCommand::expandWildcardsIfNessessary(char* prefix, char* suffix){
 			} else {
 				sprintf(newPrefix, "%s/%s", prefix, component);
 			}
-			expandWildcardIfNessessary(newPrefix, suffix);
+			expandWildcardIfNessessary(newPrefix, suffix, arguements);
 			return;
 		} else {
 			if (prefix == NULL || prefix[0] == 0) {
@@ -153,7 +154,7 @@ SimpleCommand::expandWildcardsIfNessessary(char* prefix, char* suffix){
 			} else {
 				sprintf(newPrefix, "/%s/%s", prefix, component);
 			}
-			expandWildcardIfNessessary(newPrefix, suffix);
+			expandWildcardIfNessessary(newPrefix, suffix, arguements);
 			return;
 		}
 	}
@@ -224,10 +225,10 @@ SimpleCommand::expandWildcardsIfNessessary(char* prefix, char* suffix){
 			}
 			if (ent->d_name[0] == '.') {
 				if (component[0] == '.') {
-					expandWildcardIfNessessary(newPrefix, suffix);
+					expandWildcardIfNessessary(newPrefix, suffix, arguements);
 				}
 			} else {
-				expandWildcardIfNessessary(newPrefix, suffix);
+				expandWildcardIfNessessary(newPrefix, suffix, arguements);
 			}
 		}
 	}
