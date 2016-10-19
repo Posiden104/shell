@@ -26,6 +26,9 @@
 #include <stdlib.h>
 #include <regex.h>
 #include <string.h>
+#include <string>
+#include <vector>
+#include <string.h>
 
 #include "command.h"
 void yyerror(const char * s);
