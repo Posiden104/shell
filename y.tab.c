@@ -1306,9 +1306,9 @@ yyreduce:
 			if(strchr((yyvsp[0].string_val), '*') == NULL && strchr((yyvsp[0].string_val), '?') == NULL) {
 				Command::_currentSimpleCommand->insertArgument( (yyvsp[0].string_val) );
 			} else {
-				std::vector<std::string> arguments;
+				//std::vector<std::string> arguments;
 				Command::_currentSimpleCommand->flag = 0;
-				Command::_currentSimpleCommand->expandWildcardsIfNessessary(NULL,(yyvsp[0].string_val),arguments);
+				Command::_currentSimpleCommand->expandWildcardsIfNessessary(NULL,(yyvsp[0].string_val)); //,arguments);
 			}
 	}
 #line 1315 "y.tab.c" /* yacc.c:1646  */
