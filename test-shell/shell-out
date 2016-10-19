@@ -1,18 +1,22 @@
-total 208
-drwxr-s--- 3 jvanauke jvanauke 4096 Oct 17 15:48 .
-drwxr-s--- 4 jvanauke jvanauke 4096 Oct 17 15:48 ..
+total 216
+drwxr-s--- 3 jvanauke jvanauke 4096 Oct 19 07:35 .
+drwxr-s--- 4 jvanauke jvanauke 4096 Oct 19 07:34 ..
+-rw-r----- 1 jvanauke jvanauke   54 Oct 19 07:35 .nfs00000000055c4d790000261a
+-rw-r----- 1 jvanauke jvanauke 3010 Oct 19 07:35 .nfs00000000055c515300002619
+-rw-r----- 1 jvanauke jvanauke    0 Oct 19 07:35 .nfs00000000055c51b80000261b
 -rwxr-x--- 1 jvanauke jvanauke  718 Sep 15 10:06 README
--rwxr-x--- 1 jvanauke jvanauke    0 Oct 17 15:48 bgfile
--rw-r----- 1 jvanauke jvanauke   57 Oct 17 15:48 err1
--rw-r----- 1 jvanauke jvanauke   57 Oct 17 15:48 err2
--rwxr-x--- 1 jvanauke jvanauke   22 Oct 17 15:48 file-list
+-rwxr-x--- 1 jvanauke jvanauke    0 Oct 19 07:35 bgfile
+-rw-r----- 1 jvanauke jvanauke   57 Oct 19 07:35 err1
+-rw-r----- 1 jvanauke jvanauke   57 Oct 19 07:35 err2
+-rwxr-x--- 1 jvanauke jvanauke  425 Oct 19 07:35 file-list
 -rwxr-x--- 1 jvanauke jvanauke 3727 Sep 15 10:06 file1.cc
 drwxr-s--- 2 jvanauke jvanauke 4096 Sep 15 10:06 files
+-rw-r----- 1 jvanauke jvanauke    0 Oct 19 07:35 hello world
 -rw-r----- 1 jvanauke jvanauke    0 Oct 17 15:48 hello world
 -rw-r----- 1 jvanauke jvanauke    0 Oct 17 15:36 hello world
--rwxr-x--- 1 jvanauke jvanauke  233 Oct 17 15:48 out
--rw-r----- 1 jvanauke jvanauke   47 Oct 17 15:48 shell-in
--rw-r----- 1 jvanauke jvanauke    0 Oct 17 15:48 shell-out
+-rwxr-x--- 1 jvanauke jvanauke  233 Oct 19 07:35 out
+-rw-r----- 1 jvanauke jvanauke   47 Oct 19 07:35 shell-in
+-rw-r----- 1 jvanauke jvanauke    0 Oct 19 07:35 shell-out
 -rwxr-x--- 1 jvanauke jvanauke  279 Sep 15 10:06 test1
 -rwxr-x--- 1 jvanauke jvanauke  659 Sep 15 10:06 test10
 -rwxr-x--- 1 jvanauke jvanauke  297 Sep 15 10:06 test102
@@ -54,4 +58,4 @@ drwxr-s--- 2 jvanauke jvanauke 4096 Sep 15 10:06 files
 -rwxr-x--- 1 jvanauke jvanauke  366 Sep 15 10:06 test8
 -rwxr-x--- 1 jvanauke jvanauke  247 Sep 15 10:06 test9
 -rwxr-x--- 1 jvanauke jvanauke 4075 Sep 15 10:06 testall
--rw-r----- 1 jvanauke jvanauke   36 Oct 17 15:42 testall.out
+-rw-r----- 1 jvanauke jvanauke   36 Oct 17 15:48 testall.out
