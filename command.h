@@ -10,7 +10,7 @@ struct SimpleCommand {
 	// Number of arguments
 	int _numOfArguments;
 	char ** _arguments;
-	std::vector<string> arguments;
+	vector<string> arguments;
 	int flag;
 
 	SimpleCommand();
