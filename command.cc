@@ -11,7 +11,7 @@
 
 #include <stdio.h>
 #include <stdlib.h>
-#include <string.h>
+#include <string>
 #include <unistd.h>
 #include <sys/types.h>
 #include <sys/wait.h>
@@ -104,13 +104,10 @@ SimpleCommand::insertArgument( char * argument )
 	_numOfArguments++;
 }
 
-SimpleCommand::int flag = 0;
-SimpleCommand::std::vector<string> arguments;
 
 void
 SimpleCommand::expandWildcardsIfNessessary(char* prefix, char* suffix){
 	
-
 	if (suffix[0] == 0) {
 		arguments.push_back(strdup(prefix));
 		return;
