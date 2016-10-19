@@ -243,7 +243,7 @@ SimpleCommand::expandWildcardsIfNessessary(char* prefix, char* suffix, std::vect
 }
 
 char*
-SimpleCommand::expandTilde(char* arguement){
+SimpleCommand::expandTilde(char* argument){
 	int f = 0;
 	char * st = NULL;
 	struct passwd * pw = NULL;
