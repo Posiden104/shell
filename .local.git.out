@@ -940,3 +940,9 @@ nothing to commit, working directory clean
 [master 465b69c] Commit
  4 files changed, 6 insertions(+), 3 deletions(-)
  rewrite y.tab.o (98%)
+[master 29934a8] Commit
+ 10 files changed, 10 insertions(+), 74 deletions(-)
+ rewrite command.o (89%)
+ rewrite shell (86%)
+ rewrite test-shell/csh-out (100%)
+ rewrite test-shell/shell-out (100%)

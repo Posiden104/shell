@@ -133,21 +133,21 @@ void myunputc(int c) {
 		int tin = dup(0);
 		int tout = dup(1);
 
-		int pP[2];
-		int cP[2];
+		int parentPipe[2];
+		int childPipe[2];
 	
-		if(pipe(cP) == -1 || pipe(pP) == -1) {
+		if(pipe(childPipe) == -1 || pipe(parentPipe) == -1) {
 			perror("pipe");
 			exit(2);
 		}
 
-		// pP from stdin
-		dup2(pP[0], 0);
-		close(pP[0]);
+		// parentPipe from stdin
+		dup2(parentPipe[0], 0);
+		close(parentPipe[0]);
 
-		//stdout to cP
-		dup2(cP[1], 1);
-		close(cP[1]);
+		//stdout to childPipe
+		dup2(childPipe[1], 1);
+		close(childPipe[1]);
 
 		pid_t child;
 		child = fork();
@@ -158,11 +158,11 @@ void myunputc(int c) {
 		}
 		if(child == 0){
 			// is child
-			dup2(cP[0], 0);
-			close(cP[0]);
+			dup2(childPipe[0], 0);
+			close(childPipe[0]);
 
-			dup2(pP[1], 1);
-			close(pP[1]);
+			dup2(parentPipe[1], 1);
+			close(parentPipe[1]);
 
 			char * args[2];
 			args[0] = "/homes/jvanauke/cs252/lab3-src/shell";
@@ -180,10 +180,10 @@ void myunputc(int c) {
 
 			dup2(tout, 1);
 			close(tout);
-			close(pP[0]);
-			close(pP[1]);
-			close(cP[0]);
-			close(cP[1]);
+			close(parentPipe[0]);
+			close(parentPipe[1]);
+			close(childPipe[0]);
+			close(childPipe[1]);
 
 			int k = 0; 
 			char c = 0;
@@ -201,10 +201,10 @@ void myunputc(int c) {
 			dup2(tin, 0);
 			close(tin);
 
-			close(pP[0]);
-			close(pP[1]);
-			close(cP[0]);
-			close(cP[1]);
+			close(parentPipe[0]);
+			close(parentPipe[1]);
+			close(childPipe[0]);
+			close(childPipe[1]);
 		}
 
 		waitpid(child, NULL, 0);
@@ -218,12 +218,6 @@ void myunputc(int c) {
 		}
 }
 
-[^ \t\n][^ \t\n]*  {
-		/* Assume that file names have only alpha chars */
-		yylval.string_val = strdup(yytext);
-		return WORD;
-	}
-
 \"[^\n\"]*\"	{
 	// quotes
 	char quote[100];
@@ -234,5 +228,13 @@ void myunputc(int c) {
 	yylval.string_val = strdup(quote);
 	return WORD;
 }
+
+
+[^ \t\n][^ \t\n]*  {
+		/* Assume that file names have only alpha chars */
+		yylval.string_val = strdup(yytext);
+		return WORD;
+	}
+
 
 %%
