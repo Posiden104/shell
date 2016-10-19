@@ -946,3 +946,7 @@ nothing to commit, working directory clean
  rewrite shell (86%)
  rewrite test-shell/csh-out (100%)
  rewrite test-shell/shell-out (100%)
+[master f9b338f] Commit
+ 10 files changed, 46 insertions(+), 33 deletions(-)
+ rewrite test-shell/csh-out (100%)
+ rewrite test-shell/shell-out (100%)
