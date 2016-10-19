@@ -81,6 +81,7 @@ argument:
 			if(strchr($1, '*') == NULL && strchr($1, '?') == NULL) {
 				Command::_currentSimpleCommand->insertArgument( $1 );
 			} else {
+				Command::_currentSimpleCommand->flag = 0;
 				Command::_currentSimpleCommand->expandWildcardsIfNessessary(NULL,$1);
 			}
 	}
