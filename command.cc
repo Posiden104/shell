@@ -146,7 +146,7 @@ SimpleCommand::expandWildcardsIfNessessary(char* prefix, char* suffix, std::vect
 			} else {
 				sprintf(newPrefix, "%s/%s", prefix, component);
 			}
-			expandWildcardsIfNessessary(newPrefix, suffix, arguements);
+			expandWildcardsIfNessessary(newPrefix, suffix, arguments);
 			return;
 		} else {
 			if (prefix == NULL || prefix[0] == 0) {
@@ -154,7 +154,7 @@ SimpleCommand::expandWildcardsIfNessessary(char* prefix, char* suffix, std::vect
 			} else {
 				sprintf(newPrefix, "/%s/%s", prefix, component);
 			}
-			expandWildcardsIfNessessary(newPrefix, suffix, arguements);
+			expandWildcardsIfNessessary(newPrefix, suffix, arguments);
 			return;
 		}
 	}
@@ -225,10 +225,10 @@ SimpleCommand::expandWildcardsIfNessessary(char* prefix, char* suffix, std::vect
 			}
 			if (ent->d_name[0] == '.') {
 				if (component[0] == '.') {
-					expandWildcardsIfNessessary(newPrefix, suffix, arguements);
+					expandWildcardsIfNessessary(newPrefix, suffix, arguments);
 				}
 			} else {
-				expandWildcardsIfNessessary(newPrefix, suffix, arguements);
+				expandWildcardsIfNessessary(newPrefix, suffix, arguments);
 			}
 		}
 	}
